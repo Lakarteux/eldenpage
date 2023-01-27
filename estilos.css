@@ -1,0 +1,3041 @@
+/* En general la idea del diseño provino de la estética del juego, del uso de colores que van hacia lo dorado.
+Trate de que fuera sobria con el fondo oscuro y elementos que resaltaran. */
+
+/* Se aplica esta propiedad a todos los elementos, haciendo que incluyan el padding y border dentro de las medidas de ancho y alto */
+* {
+
+    box-sizing: border-box;
+}
+
+/* El color de fondo, es un tono marrón que combina bien y hace resaltar los elementos, además de no ser tan oscuro.
+Se excluye de ser condicionado por los tamaños al ser el color de fondo que no cambia. */
+body {
+    background-color: rgb(24, 20, 0);
+}
+
+/* para pantallas que midan más de 1200px de ancho. */
+@media only screen and (min-width:1200px) {
+
+    /*reset de borde/margen del body*/
+    body {
+        margin: 0;
+        /*especificación inicial de que no hay márgenes para evitar errores visuales en la página*/
+        padding: 0;
+        /*especificación inicial de que no hay márgenes para evitar errores visuales en la página*/
+    }
+
+    ul {
+        list-style-type: none;
+        /*Se especifica que no tome el estilo común de la lista*/
+    }
+
+    /* Estilos de la barra de navegación. Que se ubique al final de la línea, en la derecha */
+
+    /*contenedor de la barra de navegación*/
+    .top-nav {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(209, 202, 152);
+    }
+
+    .menu {
+        float: inline-end;
+        /*Se ubica el menú al lado derecho, al final de la línea*/
+        padding: 0vw 1vw 0vw 0vw;
+        /*padding izquierdo del menú, adaptable*/
+    }
+
+    /* La personalización de los botones. Hice que parecieran botones, redondeados, sin bordes, con espacio y en fila.  
+    El color es parte de la paleta y llama la atención. Y tiene un efecto css para regular el cambio cuando se le haga hover */
+    .menu li {
+        display: inline-block;
+    }
+
+    .menu li a {
+        padding: 1vw 1.25vw;
+        /* se usan unidades de viewport para que se ajustan a la medida de la pantalla. 1% de arriba/abajo y 1.25% de derecha/izquierda es apropiado en tamaños tan grandes*/
+        background-color: rgb(96, 123, 125);
+        /*El color de fondo*/
+        text-decoration: none;
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        color: rgb(209, 202, 152);
+        /*Color del texto de los botones*/
+        border: none;
+        /*Se cambia el estilo del botón, para que no tenga un borde*/
+        border-radius: 5px;
+        /*redondeo del botón*/
+        opacity: 0.8;
+        /*opacidad inicial*/
+        transition: 0.3s;
+        /*duración de la transición a otros estados*/
+    }
+
+    /* los detalles del hover que lo resaltan mediante color y opacidad */
+    .menu li a:hover {
+        color: rgb(247, 240, 109);
+        /*Color del texto de los botones*/
+        background-color: rgb(148, 108, 7);
+        /*Color del fondo de los botones*/
+        opacity: 1;
+        /*opacidad del botón bajo hover*/
+    }
+
+    /*checkbox del menú de hamburguesa*/
+    #menu-toggle {
+        display: none;
+        /*no mostrarlo*/
+    }
+
+    /*checkbox del menú de hamburguesa*/
+    .menu-button-container {
+        display: none;
+        /*no mostrarlo*/
+    }
+
+    /* AL ser un link, el titulo pude modificarlo correctamente con esta especificación. También incluye la fuente de Google, que relacione
+    en el index. Se ubica al inicio, se le quita la línea */
+    h1 a {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        text-decoration: none;
+        /*Se especifica que no tenga decoración, la línea debajo al ser un link*/
+        color: rgb(148, 108, 7);
+        /*Color del texto del título*/
+        float: inline-start;
+        /*Se ubica al inicio de la línea*/
+        width: 30vw;
+        /*El ancho respecto al viewport*/
+        padding: 0vw 0vw 0vw 1vw;
+        /* se le da padding a la izquierda para que no choque con el borde*/
+
+    }
+
+    /* el cambio de color con el hover */
+    h1 a:hover {
+        color: rgb(247, 240, 109);
+        /*Color del texto del titulo*/
+    }
+
+    /* Este fue uno de los detalles más chéveres que aprendí en w3schools. es una manera algo rustica, pero efectiva de señalar donde se 
+    está en la página y solo requiere de una clase */
+    #active {
+        background-color: rgb(190, 139, 10);
+        /*El color de fondo*/
+        color: rgb(247, 240, 109);
+        /*Color del texto del botón del lugar donde se está en la página*/
+    }
+
+    /* El texto de introducción tiene especificaciones al tamaño, color, padding superior e izquierdo. También el espacio de línea, tipo de caja,
+    y tamaño de las líneas de texto. Esto lo limita para que sean párrafos más fáciles de leer*/
+    .intro {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        padding: 2vw 2vw;
+        /*padding adaptable en todos los lados*/
+        line-height: 2;
+        /*el tamaño de la línea de texto*/
+        inline-size: 60vw;
+        /*se cambia el tamaño de las lineas de texto a un tamaño adaptable*/
+    }
+
+    /* Los títulos, con el detalle de que esta fuente requiere ser más grande para verse así. */
+    .title {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: x-large;
+        /*el tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*el color de los títulos*/
+        padding: 0vw 2vw;
+        /*Cambio a un padding con valores adaptables, en los lados*/
+    }
+
+    /* El texto de introducción */
+    .text-int {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 2vw 2vw;
+        /*padding con Valores adaptables en todos los lados*/
+        line-height: 3vw;
+        /*Alto de línea de Valor adaptable*/
+        inline-size: 60vw;
+        /*largo de las líneas de valor adaptable*/
+    }
+
+    /* El texto en general, con altura de línea algo más alta para facilitar la lectura */
+    .text {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 2vw 2vw;
+        /*padding con Valores adaptables en todos los lados*/
+        line-height: 3vw;
+        /*Alto de línea de Valor adaptable*/
+        inline-size: 60vw;
+        /*largo de las líneas de valor adaptable*/
+    }
+
+    /* Los títulos de la lista. */
+    .text-li {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: larger;
+        /*El tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color del texto de los títulos*/
+        padding: 2vw 0vw 0vw 0vw;
+        /*padding de arriba adaptable*/
+    }
+
+    /* El texto de la lista, bastante similar a lo anterior, pero con una altura de línea */
+    .text-lis {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*tamaño del texto de la lista*/
+        color: rgb(209, 202, 152);
+        /*color del texto de la lista*/
+        line-height: 3vw;
+        /*Altura de línea de valor adaptable*/
+        inline-size: 60vw;
+        /*Largo de línea de valor adaptable*/
+        padding: 1vw 0vw;
+        /*padding vertical adaptable*/
+    }
+
+    /* Especificaciones para la tabla, que permiten que se vea con borde y que este sea más sencillo y bonito.
+    tienen que ir todas para que se vea en la cabecera y en las casillas*/
+    table,
+    th,
+    td {
+        border: rgb(96, 123, 125) solid 0.25vw;
+        /*Valor adaptable y borde solido un poco más grueso*/
+        border-collapse: collapse;
+        /*borde sencillo, no doble como viene por default*/
+    }
+
+    /*una clase para ajustar el ancho de la tabla*/
+    .caja-tabla {
+        width: 90vw;
+        /*ancho de la tabla*/
+        text-align: center;
+        /*alineación del texto al centro*/
+    }
+
+    /*una clase para organizar el mapa de navegación, un contenedor*/
+    .navegacion {
+        display: flex;
+        /*tipo de caja que envuelve a los créditos*/
+        justify-content: center;
+        /*centrar el contenido*/
+        padding: 2vw 0vw;
+        /*padding vertical adaptable*/
+    }
+    /*texto de la tabla de navegación*/
+    .text-navtable {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*color de la fuente*/
+        line-height: 2vw;        
+    }
+    /*corrección a los bullet points de la lista por fuera*/
+    td li{
+        list-style-position: inside;
+    }
+    /*una clase para organizar la tabla de créditos, un contenedor*/
+    .creditos {
+        display: flex;
+        /*tipo de caja que envuelve a los créditos*/
+        justify-content: center;
+        /*centrar el contenido*/
+    }
+
+    /* Una clase para el texto de la cabecera de la tabla */
+    .cabezote {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: larger;
+        /*tamaño de fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        padding: 2vw 2vw;
+        /*Valor adaptable*/
+        line-height: 3vw;
+        /*Valor adaptable*/
+
+    }
+
+    /* una clase para los links de la tabla, para que se noten como links */
+    .table-li {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        color: rgb(187, 170, 75);
+        line-height: 3vw;
+        /*Valor adaptable*/
+        text-decoration: underline;
+        /*aplicar la linea de abajo*/
+
+    }
+
+    /* Un cambio de color en hover, para recalcar que son links clickeables */
+    .table-li:hover {
+
+        color: rgb(247, 240, 109);
+        /*color de links en la lista*/
+
+    }
+
+    /* El texto de la tabla, más sencillo y pequeño. Se sigue usando el padding de la izquierda para ordenar */
+    .text-table {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*color de la fuente*/
+        padding: 1.5vw 2vw;
+        /*Valor adaptable, se añade padding vertical y horizontal para separar mejor el texto*/
+        line-height: 1vw;
+        /*Altura de la línea de valor adaptable*/
+    }
+
+
+    /* Las clases para las imágenes. */
+
+    /* Esta va para las imágenes grandes de las secciones, Se soluciona su tamaño con un valor adaptable y padding para espaciar.
+    */
+    .imgsize {
+        max-width: 32vw;
+        /*ancho maximo de la imagen*/
+        padding: 2vw 2vw;
+        /*padding adaptable por todos los lados*/
+    }
+
+    /* Para conseguir que se ubique correctamente al final de la línea se ubica dentro de un div con este valor */
+    .imgsintro {
+        float: right;
+        /*flotado hacia la derecha de la imagen*/
+    }
+
+    /* Las imágenes pequeñas de las secciones, son más pequeñas y padding para espaciarlo del bloque de texto. */
+    .imgnml {
+        max-width: 30vw;
+        /*Ancho máximo de las imágenes*/
+        padding-top: 1vw;
+        /*padding vertical adaptable*/
+
+    }
+
+   
+    /* Se hace uso de un layout grid en un div que envuelve a las imágenes, que permite ubicar las imágenes por columnas que aprovechan el ancho total de la página. Además se centran. */
+    .imgsindx {
+        display: grid;
+        /*se especifica el layout que se usa*/
+        text-align: center;
+        /*se alinean los elementos al centro*/
+        grid-template-columns: repeat(3, 1fr);
+        /*se especifican las columnas del grid, repetir 3 veces de 1 fracción*/
+
+    }
+
+    /* Las imágenes de la página principal, Se da el ancho máximo de 33% para que abarquen el máximo posible cada una. Además, se les da el atributo block para que no aparezca un espacio en blanco debajo*/
+    .imgind {
+        display: block;
+        /*layout de bloque para quitar el borde de espacio en blanco debajo de la imagen*/
+        max-width: 100%;
+        /*el ancho máximo de las imágenes*/
+    }
+
+    /* Clase para el div contenedor del mapa */
+    .mapcanvas{
+        display: block;
+        /* especificacion de como se presenta el contenedor */
+        position: relative;
+        /* especifica como se ubica respecto a otros elementos */
+        margin: auto;
+        /* especifica las margenes, para abarcar todo el espacio, funciona con el block */
+    }
+
+    /* Clase para la imagen del mapa interactivo */
+    .mapint{
+        display: block;
+        /* especificacion de como se presenta la imagen */
+        margin: auto;
+        /* especifica las margenes, para abarcar todo el espacio, funciona con el block */
+        width: 98vw;
+        /* especifica el ancho, 98% del viewport */
+    }
+
+    /* Clase para el bloque de del contenedor de información del mapa interactivo */
+    .mapinfo{
+        display: flex;
+        /* especificacion de como se presenta el contenedor */
+        position: relative;
+        /* especifica como se ubica respecto a otros elementos */
+        margin: auto;
+        /* especifica las margenes, para abarcar todo el espacio y que no hayan espacios raros */
+        justify-content: space-between;
+        /* especifica la ubicación del contenido interior, separado a los extremos */
+        width: 98vw;
+        /* especifica el ancho, 98% del viewport */
+        background-color: rgb(96, 123, 125);
+        /* especifica el color de fondo */
+        border: 3px rgb(247, 240, 109) double;
+        /* especifica el borde */
+
+
+    }
+
+    /* Clase para la imagen que acompaña a la información del mapa */
+
+    .imgmapinfo{
+        max-width: 30vw;
+        /* especifica el ancho maximo de la imagen, 20% del viewport */
+        float: left;
+        /* flota el elemento a la izquierda */
+  
+    }
+
+
+    /* Clase para el titulo informativo del mapa interactivo */
+    .text-title{
+       display: flex;
+       /* especifica como se presenta el titulo */
+        width: 50vw;
+        /* ancho del campo de texto del titulo */
+        justify-content: center;
+        /* especifica como se justifica el texto */
+        color: rgb(187, 170, 75);
+        /* especifica el color del texto */
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: x-large;
+        /*el tamaño de la fuente*/
+    }
+
+
+    /* Clase para el texto informativo del mapa interactivo */
+    .text-info{
+        display: flex;
+        /* especificacion de como se presenta el bloque de texto */
+        flex-wrap: wrap;
+        /* especifica como se manejan multiples elementos, en este caso en varias lineas para dar ese orden de titulo y texto */
+        align-items: center;
+        /* especificacion de como se alinean el texto */
+        justify-content: flex-end;
+        /* Especifica como se alinean los elementos en el flex */
+        width: 50vw;
+        /* especifica el ancho, 50% del viewport */
+        padding-right: 2.5vw;
+        color: rgb(24, 20, 0);
+        /* especifica el color del texto */
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+    }
+
+ 
+
+
+
+
+    /* clases para las partes del mapa */
+
+
+    .altus {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:21vw;
+        /* especifica el ancho del viewport */
+        bottom:58%;
+        /* especifica la distancia desde abajo */
+        left:22%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s; 
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+
+    }
+       /* texto encima de la parte del mapa */
+       .atooltip .atext{
+        visibility: hidden;
+        /* indica que no se vea el texto */
+        color: rgb(247, 240, 109);
+        /* color del texto */
+        text-align: center;
+        /* alineacion del texto */
+        text-shadow: 2px 2px 2px rgb(24, 20, 0);
+        /* sombra del texto para hacer contraste con el fondo */
+        font-family: 'Spectral', 'serif';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        position: absolute;
+        /* indica que se ubique en una posición especifica */
+        bottom:66%;
+        /* especifica la distancia desde abajo */
+        left:34%;
+        /* especifica la distancia desde la izquierda */
+        z-index: 3;
+        /* indica la posicion en el eje z, se ubica encima de las partes del mapa */
+        transition: visibility 0s ease 0.5s;
+        /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .caelid {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:22vw;
+        /* especifica el ancho del viewport */
+        bottom:16%;
+        /* especifica la distancia desde abajo */
+        left:49%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s; 
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */        
+    }
+
+        /* texto encima de la parte del mapa */
+        .ctooltip .ctext{
+        visibility: hidden;
+        /* indica que no se vea el texto */
+        color: rgb(247, 240, 109);
+        /* color del texto */
+        text-align: center;
+        /* alineación del texto */
+        text-shadow: 2px 2px 2px rgb(24, 20, 0);
+        /* sombra del texto para hacer contraste con el fondo */
+        font-family: 'Spectral', 'serif';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        position: absolute;
+        /* indica que se ubique en una posición especifica */
+        bottom:23%;
+        /* especifica la distancia desde abajo */
+        left:58%;
+        /* especifica la distancia desde la izquierda */
+        z-index: 3;
+        /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+        transition: visibility 0s ease 0.5s;
+        /* esta transicion permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .consecrated {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:11vw;
+        /* especifica el ancho del viewport */
+        bottom:69%;
+        /* especifica la distancia desde abajo */
+        left:51%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s; 
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+
+        /* texto encima de la parte del mapa */
+        .cstooltip .cstext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: medium;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:75%;
+            /* especifica la distancia desde abajo */
+            left:52%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .dragon {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:16vw;
+        /* especifica el ancho del viewport */
+        bottom:26%;
+        /* especifica la distancia desde abajo */
+        left:53%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s; 
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+        /* texto encima de la parte del mapa */
+        .dbtooltip .dbtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: medium;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:28%;
+            /* especifica la distancia desde abajo */
+            left:57%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .limb {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:22.5vw;
+        /* especifica el ancho del viewport */
+        bottom:13%;
+        /* especifica la distancia desde abajo */
+        left:28.5%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s;
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+
+        /* texto encima de la parte del mapa */
+        .ltooltip .ltext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: large;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:22%;
+            /* especifica la distancia desde abajo */
+            left:39%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .liurnia {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:26vw;
+        /* especifica el ancho del viewport */
+        bottom:28%;
+        /* especifica la distancia desde abajo */
+        left:11%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s;
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+
+        /* texto encima de la parte del mapa */
+        .lltooltip .lltext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineacion del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: large;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:41%;
+            /* especifica la distancia desde abajo */
+            left:19%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .gelmir {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:11.5vw;
+        /* especifica el ancho del viewport */
+        bottom:63%;
+        /* especifica la distancia desde abajo */
+        left:19%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s;
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+
+        /* texto encima de la parte del mapa */
+        .mgtooltip .mgtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: large;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:67%;
+            /* especifica la distancia desde abajo */
+            left:23%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .mountain {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:16vw;
+        /* especifica el ancho del viewport */
+        bottom:72%;
+        /* especifica la distancia desde abajo */
+        left:64%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s;
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+
+        /* texto encima de la parte del mapa */
+        .mogtooltip .mogtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: large;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:79%;
+            /* especifica la distancia desde abajo */
+            left:70%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+    .weeping {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:14vw;
+        /* especifica el ancho del viewport */
+        bottom:0.5%;
+        /* especifica la distancia desde abajo */
+        left:34.5%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0.5s;
+        /* retardo de 2 segundos para que se mantenga el color del estado hover */
+    }
+
+        /* texto encima de la parte del mapa */
+        .wptooltip .wptext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: medium;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:9%;
+            /* especifica la distancia desde abajo */
+            left:41%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 0.5s;
+            /* esta transición permite que haya un retraso y se mantenga el texto 2 segundos */
+        }
+
+
+    
+    /* clase para el hover de las partes del mapa */
+    /* funciona así solo en pantallas de más de 1200px, para computadores */
+    /* se incluyen varias clases que hacen lo mismo */
+    .altus:hover,
+    .caelid:hover,
+    .consecrated:hover,
+    .dragon:hover,
+    .limb:hover,
+    .liurnia:hover,
+    .gelmir:hover,
+    .mountain:hover,
+    .weeping:hover {
+
+         /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 5px rgb(247, 240, 109))
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color  */
+                drop-shadow(-1px -1px 5px rgb(247, 240, 109));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+                transition: filter 0s ease 0s;
+                /* transición instantánea, para que se mantenga el retraso en el otro efecto  */
+    }
+
+
+    /* clase para el texto de las partes del mapa */
+    /* se incluyen varias clases que hacen lo mismo en hover */
+    .atooltip:hover .atext,
+    .ctooltip:hover .ctext,
+    .cstooltip:hover .cstext,
+    .dbtooltip:hover .dbtext,
+    .ltooltip:hover .ltext,
+    .lltooltip:hover .lltext,
+    .mgtooltip:hover .mgtext,
+    .mogtooltip:hover .mogtext,
+    .wptooltip:hover .wptext
+     {
+          /* cambia la visibilidad al momento de hacer hover */
+        visibility: visible;
+        transition: visibility 0s ease 0s;
+        /* transición instantánea, para que se mantenga el retraso en el otro efecto  */
+      }
+
+    /* La clase para los créditos estáticos flotantes. Se posiciona en la parte inferior derecha gracias a ubicarlo con bottom a 0vw y right a 1vw.
+    Fixed lo bloquea en ese lugar, encima de la página */
+    .fixed {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        position: fixed;
+        /*posición bloqueada del texto*/
+        bottom: 0vw;
+        /*distancia hasta el borde inferior*/
+        right: 1vw;
+        /*distancia hasta el borde derecho*/
+    }
+}
+
+
+
+/* para pantallas que midan entre 800px y 1200px de ancho */
+@media only screen and (min-width:800px) and (max-width:1200px) {
+
+    body {
+        margin: 0;
+        /*especificación inicial de que no hay márgenes para evitar errores visuales en la página*/
+        padding: 0;
+        /*especificación inicial de que no hay padding para evitar errores visuales en la página*/
+    }
+
+    ul {
+        list-style-type: none;
+        /*Se especifica que no tome el estilo común de la lista*/
+    }
+
+    /* Estilos de la barra de navegación. */
+    .top-nav {
+        display: flex;
+        /*especifica que tipo de caja es la barra*/
+        flex-direction: row;
+        /*dirección del flex, para que vayan en orden como una celda*/
+        align-items: center;
+        /*alineación vertical al centro*/
+        justify-content: space-between;
+        /*justificación a los extremos para que se vea como un menú correcto*/
+        width: 100vw;
+        /*ancho total de la pantalla, adaptable*/
+        background-color: rgb(209, 202, 152);
+        /*color del header*/
+        position: sticky;
+        /*mantiene su posición al scrollear*/
+        height: 15vw;
+        /*altura del elemento, adaptable*/
+        top: 0;
+        /*distancia de arriba, interactúa con la posición pegada*/
+        z-index: 10!important;
+        /* indicación de que se ubique por encima del mapa */
+    }
+
+
+    .menu-button-container {
+        display: flex;
+        /*especifica que tipo de caja es el contenedor del botón hamburguesa*/
+        height: 100%;
+        /*altura del contenedor, afecta lo clickeable de este*/
+        width: 6vw;
+        /*anchura del contenedor, afecta lo clickeable de este*/
+        padding: 0vw 6vw;
+        /*padding del contenedor, da los límites de este en el header*/
+        cursor: pointer;
+        /*especifica cómo se comporta el cursor al acercarse, que se note que se puede clickear*/
+        flex-direction: column;
+        /*especifica la dirección que toman las líneas del menú. en orden de columna, apiladas*/
+        justify-content: center;
+        /*alineación horizontal al centro*/
+        align-items: center;
+        /*alineación vertical al centro*/
+    }
+
+    #menu-toggle {
+        display: none;
+        /*especifica que el checkbox en el que se basa el selector no sea visible*/
+    }
+
+    /*como se ven y comportan las líneas del menú, siendo un elemento en el medio y dos más con pseudoelemento de antes y después*/
+    .menu-button,
+    .menu-button::before,
+    .menu-button::after {
+        display: block;
+        /*especifica que tipo de caja es la línea*/
+        background-color: rgb(148, 108, 7);
+        /*color de fondo de la línea*/
+        position: absolute;
+        /*como se posiciona respecto a los demás elementos*/
+        height: 1.25vw;
+        /*altura de la línea*/
+        width: 6vw;
+        /*ancho de la línea*/
+        transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        /*especificaciones para la animación al ser clickeadas*/
+        border-radius: 0.5vw;
+        /*redondeo de la línea, adaptable*/
+    }
+
+    .menu-button::before {
+        content: '';
+        /*al ser un pseudoelemento, requiere algo que se coloque. para ignorar esto, se coloca un texto vacío. */
+        margin-top: -2vw;
+        /*margen superior, sirve para ubicarlo respecto a la línea del medio*/
+    }
+
+    .menu-button::after {
+        content: '';
+        /*al ser un pseudoelemento, requiere algo que se coloque. para ignorar esto, se coloca un texto vacío.*/
+        margin-top: 2vw;
+        /*margen superior, sirve para ubicarlo respecto a la línea del medio*/
+    }
+
+    #menu-toggle:checked+.menu-button-container .menu-button::before {
+        margin-top: 0vw;
+        /*margen superior, sobre cómo se comporta luego de la animación al ser parte de una equis*/
+        transform: rotate(405deg);
+        /*rotación que hace para hacer parte de la equis*/
+    }
+
+    #menu-toggle:checked+.menu-button-container .menu-button {
+        background: rgba(255, 255, 255, 0);
+        /*oculta la línea de la mitad en la animación*/
+    }
+
+    #menu-toggle:checked+.menu-button-container .menu-button::after {
+        margin-top: 0vw;
+        /*margen superior, sobre cómo se comporta luego de la animación al ser parte de una equis*/
+        transform: rotate(-405deg);
+        /*rotación que hace para hacer parte de la equis*/
+    }
+
+    /*el menú desplegado*/
+    .menu {
+        position: absolute;
+        /*como se posiciona el elemento*/
+        text-align: center;
+        /*la alineación del texto en el centro*/
+        top: 0;
+        /*como se ubica respecto a la parte de arriba, en este caso pegado a la barra de navegación*/
+        margin-top: 15vw;
+        /*una margen que es igual a la altura de la barra de navegación, adaptable*/
+        padding: 0;
+        /*no padding*/
+        width: 100%;
+        /*ancho del menu*/
+    }
+
+    /*especificaciones hechas a los elementos de lista del menú en el estado normal, para que no muestren nada*/
+    #menu-toggle~.menu li {
+        display: none;
+        /*no muestra nada*/
+    }
+
+    /*especificaciones hechas a los elementos de lista del menú en el estado chequeado, para que muestren cosas*/
+    #menu-toggle:checked~.menu li {
+        display: block;
+        /*tiop de caja que son los elementos de lista del menú*/
+        width: 100%;
+        /*ancho de caja*/
+        height: 4vw;
+        /*altura de caja, adaptable*/
+        background: rgb(209, 202, 152);
+        /*color de fondo de la caja*/
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        /*especificaciones para la animación del botón*/
+        line-height: 4vw;
+        /*altura de línea, ajuste para centrado*/
+
+    }
+
+    /*especificaciones para los textos del menú, los que hacen a los elementos del menú clickeables*/
+    .item-menu {
+        display: block;
+        /*que tipo de caja tienen los textos, para que sean compatibles y funcionen en tamaño igual a las cajas de los elementos de lista*/
+        width: 100%;
+        /*altura de las cajas*/
+        height: 100%;
+        /*anchura de las cajas*/
+        font-family: 'Lucida Sans';
+        /*fuente del texto*/
+        font-size: larger;
+        /*tamaño del texto*/
+        text-decoration: none;
+        /*sin decoración, para quitar línea predeterminada de elemento de lista*/
+
+        color: rgb(148, 108, 7);
+        /*Color del texto de los botones*/
+    }
+
+    /*especificaciones para los textos del menú, en el estado de hover*/
+    .item-menu:hover {
+        color: rgb(247, 240, 109);
+        /*cambio de color del texto al hacer hover*/
+        background-color: rgb(96, 123, 125);
+        /*cambio de color del fondo de la caja al hacer hover*/
+    }
+
+
+
+
+    /* Especificaciones para el texto/link del título */
+    h1 a {
+        display: inline-block;
+        /*tipo de caja que va a tener el titulo*/
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        text-decoration: none;
+        /*para quitar decoración de la línea debajo al ser un link*/
+        color: rgb(148, 108, 7);
+        /*Color del texto del título*/
+        width: 60vw;
+        /*El ancho respecto al viewport*/
+        padding: 0vw 0vw 0vw 1vw;
+        /* padding izquierdo, adaptable*/
+
+    }
+
+    /* el cambio de color con el hover */
+    h1 a:hover {
+        color: rgb(247, 240, 109);
+        /*Color del texto del título*/
+    }
+
+     /* Este fue uno de los detalles más chéveres que aprendí en w3schools. es una manera algo rustica, pero efectiva de señalar donde se 
+    está en la página y solo requiere de una clase */
+    #active {
+        background-color: rgb(190, 139, 10);
+        /*El color de fondo*/
+        color: rgb(247, 240, 109);
+        /*Color del texto del botón del lugar donde se está en la página*/
+    }
+
+    /* El texto de introducción*/
+    .intro {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 0vw 2vw;
+        /*padding adaptable en a los laterales*/
+        line-height: 2;
+        /*el tamaño de la línea de texto*/
+        inline-size: 100vw;
+        /*líneas de texto en un tamaño adaptable, queda cómodo ubicarlo a todo el ancho en este tamaño de pantalla*/
+    }
+
+    /* Los títulos*/
+    .title {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: x-large;
+        /*el tamaño de la fuente, más grande para que se lea mejor en este formato*/
+        color: rgb(187, 170, 75);
+        /*el color de los títulos*/
+        padding: 0vw 2vw;
+        /*Cambio a un padding con valores adaptables, en los lados*/
+    }
+
+    /* El texto de las introducciones de cada página, para acompañar las imágenes*/
+    .text-int {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 2vw 2vw;
+        /*padding con Valores adaptables en todos los lados*/
+        line-height: 3vw;
+        /*Alto de línea de Valor adaptable*/
+        inline-size: 60vw;
+        /*largo de las líneas de valor adaptable*/
+    }
+
+    /* El texto en general */
+    .text {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 0vw 2vw;
+        /*padding con Valores adaptables en todos los lados*/
+        line-height: 3.5vw;
+        /*Alto de línea de Valor adaptable*/
+        inline-size: 90vw;
+        /*largo de las líneas de valor adaptable, más largo para aprovechar más el espacio en blanco en este formato*/
+    }
+
+    /*corrección del padding a la lista de la historia*/
+    .history {
+        padding: 0;
+        /*el padding automático de la lista de elementos de la historia funcionaba mal, así que toca resetearlo*/
+    }
+    /*corrección del padding a las imágenes de las actividades*/
+    .history a {
+        padding: 0vw 2vw;
+        /*el padding automático de la lista de elementos de las actividades funcionaba mal, así que toca resetearlo*/
+    }
+
+    /* Los títulos de la lista. */
+    .text-li {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: larger;
+        /*El tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color del texto de los títulos*/
+        padding: 3vw 0vw 3vw 2vw;
+        /*padding vertical y izquierdo adaptable*/
+    }
+
+    /* El texto de la lista, bastante similar a lo anterior, pero con una altura de línea más corta para agrupar el texto. */
+    .text-lis {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*tamaño del texto de la lista*/
+        color: rgb(209, 202, 152);
+        /*color del texto de la lista*/
+        line-height: 3vw;
+        /*Altura de línea de valor adaptable*/
+        inline-size: 90vw;
+        /*Largo de línea de valor adaptable*/
+        padding: 0vw 0vw 0vw 2vw;
+        /*padding izquierdo adaptable*/
+    }
+
+
+    /* Especificaciones para la tabla, que permiten que se vea con borde sencillo.
+    aplicadas también a cabecera y casillas*/
+    table,
+    th,
+    td {
+        border: rgb(96, 123, 125) solid 0.25vw;
+        /*Valor adaptable y borde solido un poco más grueso*/
+        border-collapse: collapse;
+        /*borde sencillo, no doble como viene por default*/
+    }
+
+    /* Una clase para el texto de la cabecera de la tabla */
+    .cabezote {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: larger;
+        /*tamaño de fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        padding: 3vw 2vw;
+        /*Valor adaptable*/
+    }
+
+    /*una clase para ajustar el ancho de la tabla*/
+    .caja-tabla {
+        width: 90vw;
+        /*ancho de la tabla*/
+        text-align: center;
+        /*alineación del texto al centro*/
+    }
+    /*una clase para organizar el mapa de navegación, un contenedor*/
+    .navegacion {
+        display: flex;
+        /*tipo de caja que envuelve al mapa de navegación*/
+        justify-content: center;
+        /*centrar el contenido*/
+        padding: 2vw 0vw;
+        /*padding vertical adaptable*/
+    }
+    /*texto de la tabla de navegación*/
+    .text-navtable {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*color de la fuente*/
+        line-height: 2vw;
+    }
+
+    /*corrección a los bullet points de la lista por fuera*/
+    td li{
+        list-style-position: inside;
+    }
+
+    /*una clase para organizar la tabla de créditos, un contenedor*/
+    .creditos {
+        display: flex;
+        /*tipo de caja que envuelve a los créditos*/
+        justify-content: center;
+        /*centrar el contenido*/
+    }
+
+    /* una clase para los links de la tabla, para que se noten como links */
+    .table-li {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        padding: 0vw 1vw;
+        /*Valor adaptable del padding*/
+        text-decoration: underline;
+        /*línea de debajo del texto para que se entiendan como links*/
+        line-height: 2vw;
+        /*altura de línea*/
+
+    }
+
+    /* Un cambio de color en hover, para recalcar que son links clickeables */
+    .table-li:hover {
+        color: rgb(247, 240, 109);
+        /*color de links en la lista*/
+    }
+
+    /* El texto de la tabla, más sencillo y pequeño. Se sigue usando el padding de la izquierda para ordenar */
+    .text-table {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*color de la fuente*/
+        padding: 1.5vw 2vw;
+        /*Valor adaptable, se añade padding vertical y horizontal para separar mejor el texto*/
+        line-height: 2vw;
+        /*Altura de la línea de valor adaptable*/
+    }
+
+
+    /* Las clases para las imágenes. */
+
+    /* Esta va para las imágenes grandes de las secciones, Se soluciona su tamaño con un valor adaptable y padding para espaciar.
+    */
+    .imgsize {
+        max-width: 40vw;
+        /*ancho máximo de la imagen*/
+        padding: 2vw 2vw 1vw 1vw;
+        /*padding adaptable por todos los lados*/
+    }
+
+    /* Para conseguir que se ubique correctamente al final de la línea se ubica dentro de un div con este valor */
+    .imgsintro {
+        float: right;
+        /*flotado hacia la derecha de la imagen*/
+    }
+
+    /* Las imágenes pequeñas de las secciones, son más pequeñas y padding para espaciarlo del bloque de texto. */
+    .imgnml {
+        max-width: 60vw;
+        /*Ancho máximo de las imágenes*/
+        padding: 2vw 0vw;
+        /*padding vertical adaptable*/
+
+    }
+
+    /* Se hace uso de un layout grid en un div que envuelve a las imágenes, que permite ubicar las imágenes por columnas que aprovechan el ancho total de la página. Además se centran. */
+    .imgsindx {
+        display: grid;
+        /*se especifica el layout que se usa*/
+        text-align: center;
+        /*se alinean los elementos al centro*/
+        grid-template-columns: repeat(3, 1fr);
+        /*se especifican las columnas del grid, repetir 3 veces de 1 fracción*/
+
+    }
+
+    /* Las imágenes de la página principal, Se da el ancho máximo de 33% para que abarquen el máximo posible cada una. Además, se les da el atributo block para que no aparezca un espacio en blanco debajo*/
+    .imgind {
+        display: block;
+        /*layout de bloque para quitar el borde de espacio en blanco debajo de la imagen*/
+        max-width: 100%;
+        /*el ancho máximo de las imágenes, para que no haya espacios en blanco*/
+    }
+
+    /* Clase para el div contenedor del mapa */
+    .mapcanvas{
+        display: block;
+        /* especificación de cómo se presenta el contenedor */
+        position: relative;
+        /* especifica como se ubica respecto a otros elementos */
+        margin: auto;
+        /* especifica las márgenes, para abarcar todo el espacio, funciona con el block */
+    }
+
+    /* Clase para la imagen del mapa interactivo */
+    .mapint{
+        display: block;
+        /* especificación de cómo se presenta la imagen */
+        margin: auto;
+        /* especifica las márgenes, para abarcar todo el espacio, funciona con el block */
+        width: 98vw;
+        /* especifica el ancho, 98% del viewport */
+    }
+
+    /* Clase para el bloque de del contenedor de información del mapa interactivo */
+    .mapinfo{
+        display: flex;
+        /* especificación de cómo se presenta el contenedor */
+        position: relative;
+        /* especifica como se ubica respecto a otros elementos */
+        margin: auto;
+        /* especifica las márgenes, para abarcar todo el espacio y que no hayan espacios raros */
+        justify-content: space-between;
+        /* especifica la ubicación del contenido interior, separado a los extremos */
+        width: 98vw;
+        /* especifica el ancho, 98% del viewport */
+        background-color: rgb(96, 123, 125);
+        /* especifica el color de fondo */
+        border: 3px rgb(247, 240, 109) double;
+        /* especifica el borde */
+
+
+    }
+
+    /* Clase para la imagen que acompaña a la información del mapa */
+
+    .imgmapinfo{
+        max-width: 30vw;
+        /* especifica el ancho máximo de la imagen, 20% del viewport */
+        float: left;
+        /* flota el elemento a la izquierda */
+  
+    }
+
+
+    /* Clase para el titulo informativo del mapa interactivo */
+    .text-title{
+       display: flex;
+       /* especifica como se presenta el titulo */
+        width: 50vw;
+        /* ancho del campo de texto del titulo */
+        justify-content: center;
+        /* especifica como se justifica el texto */
+        color: rgb(187, 170, 75);
+        /* especifica el color del texto */
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: x-large;
+        /*el tamaño de la fuente*/
+    }
+
+
+    /* Clase para el texto informativo del mapa interactivo */
+    .text-info{
+        display: flex;
+        /* especificación de cómo se presenta el bloque de texto */
+        flex-wrap: wrap;
+        /* especifica como se manejan múltiples elementos, en este caso en varias líneas para dar ese orden de título y texto */
+        align-items: center;
+        /* especificación de cómo se alinean el texto */
+        justify-content: flex-end;
+        /* Especifica como se alinean los elementos en el flex */
+        width: 50vw;
+        /* especifica el ancho, 50% del viewport */
+        padding-right: 2.5vw;
+        color: rgb(24, 20, 0);
+        /* especifica el color del texto */
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*El tamaño de la fuente*/
+    }
+
+ 
+
+
+
+
+    /* clases para las partes del mapa */
+
+
+    .altus {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:21vw;
+        /* especifica el ancho del viewport */
+        bottom:58%;
+        /* especifica la distancia desde abajo */
+        left:22%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+       /* texto encima de la parte del mapa */
+       .atooltip .atext{
+        visibility: hidden;
+        /* indica que no se vea el texto */
+        color: rgb(247, 240, 109);
+        /* color del texto */
+        text-align: center;
+        /* alineación del texto */
+        text-shadow: 2px 2px 2px rgb(24, 20, 0);
+        /* sombra del texto para hacer contraste con el fondo */
+        font-family: 'Spectral', 'serif';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        position: absolute;
+        /* indica que se ubique en una posición especifica */
+        bottom:66%;
+        /* especifica la distancia desde abajo */
+        left:33%;
+        /* especifica la distancia desde la izquierda */
+        z-index: 3;
+        /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+        transition: visibility 0s ease 1s; 
+        /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .caelid {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:22vw;
+        /* especifica el ancho del viewport */
+        bottom:16%;
+        /* especifica la distancia desde abajo */
+        left:49%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .ctooltip .ctext{
+        visibility: hidden;
+        /* indica que no se vea el texto */
+        color: rgb(247, 240, 109);
+        /* color del texto */
+        text-align: center;
+        /* alineación del texto */
+        text-shadow: 2px 2px 2px rgb(24, 20, 0);
+        /* sombra del texto para hacer contraste con el fondo */
+        font-family: 'Spectral', 'serif';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        position: absolute;
+        /* indica que se ubique en una posición especifica */
+        bottom:23%;
+        /* especifica la distancia desde abajo */
+        left:58%;
+        /* especifica la distancia desde la izquierda */
+        z-index: 3;
+        /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+        transition: visibility 0s ease 1s; 
+        /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .consecrated {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:11vw;
+        /* especifica el ancho del viewport */
+        bottom:69%;
+        /* especifica la distancia desde abajo */
+        left:51%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .cstooltip .cstext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:75%;
+            /* especifica la distancia desde abajo */
+            left:50%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .dragon {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:16vw;
+        /* especifica el ancho del viewport */
+        bottom:26%;
+        /* especifica la distancia desde abajo */
+        left:53%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+        /* texto encima de la parte del mapa */
+        .dbtooltip .dbtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:28%;
+            /* especifica la distancia desde abajo */
+            left:57%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+        }
+
+    .limb {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:22.5vw;
+        /* especifica el ancho del viewport */
+        bottom:13%;
+        /* especifica la distancia desde abajo */
+        left:28.5%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .ltooltip .ltext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: large;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:22%;
+            /* especifica la distancia desde abajo */
+            left:37%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .liurnia {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:26vw;
+        /* especifica el ancho del viewport */
+        bottom:28%;
+        /* especifica la distancia desde abajo */
+        left:11%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .lltooltip .lltext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: large;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:41%;
+            /* especifica la distancia desde abajo */
+            left:19%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .gelmir {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:11.5vw;
+        /* especifica el ancho del viewport */
+        bottom:63%;
+        /* especifica la distancia desde abajo */
+        left:19%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .mgtooltip .mgtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: medium;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:67%;
+            /* especifica la distancia desde abajo */
+            left:22%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .mountain {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:16vw;
+        /* especifica el ancho del viewport */
+        bottom:72%;
+        /* especifica la distancia desde abajo */
+        left:64%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .mogtooltip .mogtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineacion del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: medium;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:79%;
+            /* especifica la distancia desde abajo */
+            left:68%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .weeping {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:14vw;
+        /* especifica el ancho del viewport */
+        bottom:0.5%;
+        /* especifica la distancia desde abajo */
+        left:34.5%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .wptooltip .wptext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:8%;
+            /* especifica la distancia desde abajo */
+            left:39%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+
+    /* clase para el active de las partes del mapa */
+    /* al momento de clickearse determina lo que pasa */
+    /* específica para móvil, siendo que solo se puede clickear y no hacer hover  */
+    /* se incluyen varias clases que hacen lo mismo */
+    .altus:active,
+    .caelid:active,
+    .consecrated:active,
+    .dragon:active,
+    .limb:active,
+    .liurnia:active,
+    .gelmir:active,
+    .mountain:active,
+    .weeping:active {
+
+         /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 5px rgb(247, 240, 109))
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color  */
+                drop-shadow(-1px -1px 5px rgb(247, 240, 109));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0s;
+        /* la transición especifica que sea instantáneo, pero la transición en la imagen, tiene un retardo para que se mantenga el efecto */
+    }
+
+    /* clase para el texto de las partes del mapa */
+    /* se incluyen varias clases que hacen lo mismo en hover */
+    .atooltip:hover .atext,
+    .ctooltip:hover .ctext,
+    .cstooltip:hover .cstext,
+    .dbtooltip:hover .dbtext,
+    .ltooltip:hover .ltext,
+    .lltooltip:hover .lltext,
+    .mgtooltip:hover .mgtext,
+    .mogtooltip:hover .mogtext,
+    .wptooltip:hover .wptext
+     {
+         /* cambia la visibilidad al momento de hacer hover */
+        visibility: visible;
+        transition: visibility 0s ease 0s;
+        /* la transición especifica que sea instantáneo, pero la transición en el texto, tiene un retardo para que se mantenga el efecto */
+      }
+
+    /* La clase para los créditos estáticos flotantes. Se posiciona en la parte inferior derecha gracias a ubicarlo con bottom a 0vw y right a 1vw.
+    Fixed lo bloquea en ese lugar, encima de la página */
+    .fixed {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: x-small;
+        /*tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        position: fixed;
+        /*posición bloqueada del texto*/
+        bottom: 0vw;
+        /*distancia hasta el borde inferior*/
+        right: 1vw;
+        /*distancia hasta el borde derecho*/
+    }
+
+}
+
+
+/* para pantallas de midan menos 800px de ancho */
+@media only screen and (max-width:800px) {
+
+    
+    body {
+        margin: 0;
+        /*especificación inicial de que no hay márgenes para evitar errores visuales en la página*/
+        padding: 0;
+        /*especificación inicial de que no hay padding para evitar errores visuales en la página*/
+    }
+
+    ul {
+        list-style-type: none;
+        /*Se especifica que no tome el estilo común de la lista*/
+    }
+
+    /* Estilos de la barra de navegación. */
+    .top-nav {
+        display: flex;
+        /*especifica que tipo de caja es la barra*/
+        flex-direction: row;
+        /*dirección del flex, para que vayan en orden como una celda*/
+        align-items: center;
+        /*alineación vertical al centro*/
+        justify-content: space-between;
+        /*justificación a los extremos para que se vea como un menú correcto*/
+        width: 100vw;
+        /*ancho total de la pantalla, adaptable*/
+        background-color: rgb(209, 202, 152);
+        /*color del header*/
+        position: sticky;
+        /*mantiene su posición al scrollear*/
+        height: 15vw;
+        /*altura del elemento, adaptable*/
+        top: 0;
+        /*distancia de arriba, interactúa con la posición pegada*/
+        z-index: 10!important;
+        /* especificación de que la barra de navegación se mantenga arriba del mapa al desplegarse */
+    }
+
+
+    .menu-button-container {
+        display: flex;
+        /*especifica que tipo de caja es el contenedor del botón hamburguesa*/
+        height: 100%;
+        /*altura del contenedor, afecta lo clickeable de este*/
+        width: 12vw;
+        /*anchura del contenedor, afecta lo clickeable de este*/
+        cursor: pointer;
+        /*especifica cómo se comporta el cursor al acercarse, que se note que se puede clickear*/
+        flex-direction: column;
+        /*especifica la dirección que toman las líneas del menú. en orden de columna, apiladas*/
+        justify-content: center;
+        /*alineación horizontal al centro*/
+        align-items: center;
+        /*alineación vertical al centro*/
+    }
+
+    #menu-toggle {
+        display: none;
+        /*especifica que el checkbox en el que se basa el selector no sea visible*/
+    }
+
+    /*como se ven y comportan las líneas del menú, siendo un elemento en el medio y dos más con pseudoelemento de antes y después*/
+    .menu-button,
+    .menu-button::before,
+    .menu-button::after {
+        display: block;
+        /*especifica que tipo de caja es la línea*/
+        background-color: rgb(148, 108, 7);
+        /*color de fondo de la línea*/
+        position: absolute;
+        /*como se posiciona respecto a los demás elementos*/
+        height: 1.5vw;
+        /*altura de la línea*/
+        width: 6vw;
+        /*ancho de la línea*/
+        transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        /*especificaciones para la animación al ser clickeadas*/
+        border-radius: 0.5vw;
+        /*redondeo de la línea, adaptable*/
+    }
+
+    .menu-button::before {
+        content: '';
+        /*al ser un pseudoelemento, requiere algo que se coloque. para ignorar esto, se coloca un texto vacío.*/
+        margin-top: -2.5vw;
+        /*margen superior, sirve para ubicarlo respecto a la línea del medio*/
+    }
+
+    .menu-button::after {
+        content: '';
+        /*al ser un pseudoelemento, requiere algo que se coloque. para ignorar esto, se coloca un texto vacío.*/
+        margin-top: 2.5vw;
+        /*margen superior, sirve para ubicarlo respecto a la línea del medio*/
+    }
+
+    #menu-toggle:checked+.menu-button-container .menu-button::before {
+        margin-top: 0vw;
+        /*margen superior, sobre cómo se comporta luego de la animación al ser parte de una equis*/
+        transform: rotate(405deg);
+        /*rotación que hace para hacer parte de la equis*/
+    }
+
+    #menu-toggle:checked+.menu-button-container .menu-button {
+        background: rgba(255, 255, 255, 0);
+        /*oculta la línea de la mitad en la animación*/
+    }
+
+    #menu-toggle:checked+.menu-button-container .menu-button::after {
+        margin-top: 0vw;
+        /*margen superior, sobre cómo se comporta luego de la animación al ser parte de una equis*/
+        transform: rotate(-405deg);
+        /*rotación que hace para hacer parte de la equis*/
+    }
+
+    /*el menú desplegado*/
+    .menu {
+        position: absolute;
+        /*como se posiciona el elemento*/
+        text-align: center;
+        /*la alineación del texto en el centro*/
+        top: 0;
+        /*como se ubica respecto a la parte de arriba, en este caso pegado a la barra de navegación*/
+        margin-top: 15vw;
+        /*una margen que es igual a la altura de la barra de navegación, adaptable*/
+        padding: 0;
+        /*no padding*/
+        width: 100%;
+        /*ancho del menu*/
+    }
+
+    /*especificaciones hechas a los elementos de lista del menú en el estado normal, para que no muestren nada*/
+    #menu-toggle~.menu li {
+        display: none;
+        /*no muestra nada*/
+    }
+
+    /*especificaciones hechas a los elementos de lista del menú en el estado chequeado, para que muestren cosas*/
+    #menu-toggle:checked~.menu li {
+        display: block;
+        /*tipo de caja que son los elementos de lista del menú*/
+        width: 100%;
+        /*ancho de caja*/
+        height: 8vw;
+        /*altura de caja, adaptable*/
+        background: rgb(209, 202, 152);
+        /*color de fondo de la caja*/
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+        /*especificaciones para la animación del menú hamburguesa*/
+        line-height: 8vw;
+        /*corrección con el alto de la línea del centrado vertical*/
+    }
+
+    /*especificaciones para los textos del menú, los que hacen a los elementos del menú clickeables*/
+    .item-menu {
+        display: block;
+        /*que tipo de caja tienen los textos, para que sean compatibles y funcionen en tamaño igual a las cajas de los elementos de lista*/
+        width: 100%;
+        /*altura de las cajas*/
+        height: 100%;
+        /*anchura de las cajas*/
+        font-family: 'Lucida Sans';
+        /*fuente del texto*/
+        font-size: larger;
+        /*tamaño del texto*/
+        text-decoration: none;
+        /*sin decoración, para quitar línea predeterminada de elemento de lista*/
+        color: rgb(148, 108, 7);
+        /*Color del texto de los botones*/
+    }
+
+    /*especificaciones para los textos del menú, en el estado de hover*/
+    .item-menu:hover {
+        color: rgb(247, 240, 109);
+        /*cambio de color del texto al hacer hover*/
+        background-color: rgb(96, 123, 125);
+        /*cambio de color del fondo de la caja al hacer hover*/
+    }
+
+
+
+
+    /* Especificaciones para el texto/link del título  */
+    h1 a {
+        display: inline-block;
+        /*tipo de caja que va a tener el titulo*/
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        text-decoration: none;
+        /*para quitar decoración de la línea debajo al ser un link*/
+        font-size: x-large;
+        /*tamaño de la fuente*/
+        color: rgb(148, 108, 7);
+        /*Color del texto del título*/
+        width: 50vw;
+        /*El ancho respecto al viewport*/
+        padding: 0vw 0vw 0vw 2vw;
+        /* padding izquierdo, adaptable*/
+
+    }
+
+    /* el cambio de color con el hover */
+    h1 a:hover {
+        color: rgb(247, 240, 109);
+        /*Color del texto del título*/
+    }
+
+    
+     /* Este fue uno de los detalles más chéveres que aprendí en w3schools. es una manera algo rustica, pero efectiva de señalar donde se 
+    está en la página y solo requiere de una clase */
+    #active {
+        background-color: rgb(190, 139, 10);
+        /*El color de fondo*/
+        color: rgb(247, 240, 109);
+        /*Color del texto del botón del lugar donde se está en la página*/
+    }
+
+    /* El texto de introducción*/
+    .intro {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 0vw 2vw;
+        /*padding adaptable en a los laterales*/
+        line-height: 2;
+        /*el tamaño de la línea de texto*/
+        inline-size: 100vw;
+        /*líneas de texto en un tamaño adaptable, queda cómodo ubicarlo a todo el ancho en este tamaño de pantalla*/
+    }
+
+    /* Los títulos, con el detalle de que esta fuente requiere ser larger para verse así. */
+    .title {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: larger;
+        /*el tamaño de la fuente, más grande para que se lea mejor en este formato*/
+        color: rgb(187, 170, 75);
+        /*el color de los títulos*/
+        padding: 0vw 2vw;
+        /*Cambio a un padding con valores adaptables, en los lados*/
+    }
+
+    /* El texto de las introducciones de cada página, para acompañar las imágenes*/
+    .text-int {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: large;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 2vw 2vw;
+        inline-size: 100vw;
+        /*largo de las líneas de valor adaptable*/
+    }
+
+    /* El texto en general */
+    .text {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*El tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*el color de la fuente*/
+        padding: 0vw 2vw;
+        /*padding con Valores adaptables en todos los lados*/
+        line-height: 5.5vw;
+        /*Alto de línea de Valor adaptable*/
+        inline-size: 95vw;
+        /*largo de las líneas de valor adaptable, más largo para aprovechar más el espacio en blanco en este formato*/
+    }
+
+    /*corrección del padding a la lista de la historia*/
+    .history {
+        padding: 0vw; 
+        /*el padding automático de la lista de elementos de la historia funcionaba mal, así que toca resetearlo*/
+    }
+
+    /* Los títulos de la lista. */
+    .text-li {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: larger;
+        /*El tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color del texto de los títulos*/
+        padding: 0vw 0vw 0vw 2vw;
+        /*padding izquierdo a los títulos*/
+
+    }
+
+    /* El texto de la lista, bastante similar a lo anterior, pero con una altura de línea más corta para agrupar el texto. */
+    .text-lis {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*tamaño del texto de la lista*/
+        color: rgb(209, 202, 152);
+        /*color del texto de la lista*/
+        line-height: 5.5vw;
+        /*Altura de línea de valor adaptable*/
+        inline-size: 90vw;
+        /*Largo de línea de valor adaptable*/
+        padding: 2vw 0vw 2vw 2vw;
+        /*padding izquierdo a los títulos*/
+
+    }
+
+
+    /* Especificaciones para la tabla, que permiten que se vea con borde sencillo.
+    aplicadas también a cabecera y casillas*/
+    table,
+    th,
+    td {
+        border: rgb(96, 123, 125) solid 0.25vw;
+        /*Valor adaptable y borde solido un poco más grueso*/
+        border-collapse: collapse;
+        /*borde sencillo, no doble como viene por default*/
+    }
+
+    /* Una clase para el texto de la cabecera de la tabla */
+    .cabezote {
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: large;
+        /*tamaño de fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        padding: 3vw 2vw;
+        /*Valor adaptable*/
+    }
+
+    /*una clase para ajustar el ancho de la tabla*/
+    .caja-tabla {
+        width: 90vw;
+        /*ancho de la tabla*/
+        text-align: center;
+        /*alineación del texto al centro*/
+    }
+
+     /*una clase para organizar el mapa de navegación, un contenedor*/
+     .navegacion {
+        display: block;
+        /*tipo de caja que envuelve a los créditos. Este tipo de caja sirve como un marco mediante el ancho y margin para dejar espacios en la página sin que se salga*/
+        justify-content: left;
+        /*centrar el contenido*/
+        padding: 2vw 0vw;
+        /*padding vertical adaptable*/
+        overflow-x: auto;
+        /*overflow de la tabla que contiene el mapa de navegación. Es una opción debido al tamaño y que no aguanta reducirse a un ancho de 480px*/
+        width: 90%;
+        /*ancho de la página, apropiado para que haya espacios*/
+        margin: auto;
+        /*margen automática, para centrar en un bloque*/
+    }
+    /*texto de la tabla de navegación*/
+    .text-navtable {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*color de la fuente*/
+        line-height: 4vw;
+        /*alto de la línea de texto*/
+    }
+    /*corrección a los bullet points de la lista por fuera*/
+    td li{
+        list-style-position: inside;
+    }
+
+    /*una clase para organizar la tabla de créditos, un contenedor*/
+    .creditos {
+        display: flex;
+        /*tipo de caja que envuelve a los créditos*/
+        justify-content: center;
+        /*centrar el contenido*/
+    }
+
+    /* una clase para los links de la tabla, para que se noten como links */
+    .table-li {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size:medium;
+        /*tamaño de fuente*/
+        color: rgb(187, 170, 75);
+        /*color de fuente*/
+        padding: 3vw 1vw;
+        /*Valor adaptable*/
+        text-decoration: underline;
+        /*se aplica la línea debajo del texto para que se entienda como link*/
+
+    }
+
+    /* Un cambio de color en hover, para recalcar que son links clickeables */
+    .table-li:hover {
+        color: rgb(247, 240, 109);
+        /*color de links en la lista*/
+    }
+
+    /* El texto de la tabla, más sencillo y pequeño. Se sigue usando el padding de la izquierda para ordenar */
+    .text-table {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: smaller;
+        /*tamaño de la fuente*/
+        color: rgb(209, 202, 152);
+        /*color de la fuente*/
+        padding: 1.5vw 2vw;
+        /*Valor adaptable, se añade padding vertical y horizontal para separar mejor el texto*/
+        line-height: 4vw;
+        /*Altura de la línea de valor adaptable*/
+    }
+
+
+    /* Las clases para las imágenes. */
+
+    /* Esta va para las imágenes grandes de las secciones, Se soluciona su tamaño con un valor adaptable y padding para espaciar.
+    */
+    .imgsize {
+        max-width: 60vw;
+        /*ancho máximo de la imagen*/
+        padding: 2vw 2vw 0vw 1vw;
+        /*padding adaptable por todos los lados*/
+    }
+
+    /* Para conseguir que se ubique correctamente al final de la línea se ubica dentro de un div con este valor */
+    .imgsintro {
+        float: right;
+        /*flotado hacia la derecha de la imagen*/
+    }
+
+    /* Las imágenes pequeñas de las secciones, son más pequeñas y padding para espaciarlo del bloque de texto. */
+    .imgnml {
+        max-width: 90vw;
+        /*Ancho máximo de las imágenes*/
+        padding: 2vw 0vw 2vw 2vw;
+        /*padding vertical adaptable*/
+
+    }
+
+    /* Se hace uso de un layout grid en un div que envuelve a las imágenes, que permite ubicar las imágenes por columnas que aprovechan el ancho total de la página. Además se centran. */
+    .imgsindx {
+        display: grid;
+        /*se especifica el layout que se usa*/
+        text-align: center;
+        /*se alinean los elementos al centro*/
+        grid-template-columns: repeat(2, 1fr);
+        /*se especifican las columnas del grid, repetir 2 veces de 1 fracción*/
+
+    }
+
+    /* Las imágenes de la página principal, Se da el ancho máximo de 33% para que abarquen el máximo posible cada una. Además, se les da el atributo block para que no aparezca un espacio en blanco debajo*/
+    .imgind {
+        display: block;
+        /*layout de bloque para quitar el borde de espacio en blanco debajo de la imagen*/
+        max-width: 100%;
+        /*el ancho máximo de las imágenes, para que no haya espacios en blanco*/
+    }
+
+      /* Clase para el div contenedor del mapa */
+      .mapcanvas{
+        display: block;
+        /* especificación de cómo se presenta el contenedor */
+        position: relative;
+        /* especifica como se ubica respecto a otros elementos */
+        margin: auto;
+        /* especifica las márgenes, para abarcar todo el espacio, funciona con el block */
+    }
+
+    /* Clase para la imagen del mapa interactivo */
+    .mapint{
+        display: block;
+        /* especificación de cómo se presenta la imagen */
+        margin: auto;
+        /* especifica las márgenes, para abarcar todo el espacio, funciona con el block */
+        width: 98vw;
+        /* especifica el ancho, 98% del viewport */
+    }
+
+    /* Clase para el bloque de del contenedor de información del mapa interactivo */
+    .mapinfo{
+        display: flex;
+        /* especificación de cómo se presenta el contenedor */
+        position: relative;
+        /* especifica como se ubica respecto a otros elementos */
+        margin: auto;
+        /* especifica las márgenes, para abarcar todo el espacio y que no hayan espacios raros */
+        align-items: center;
+        /* centra los items */
+        justify-content: space-between;
+        /* especifica la ubicación del contenido interior, separado a los extremos */
+        width: 98vw;
+        /* especifica el ancho, 98% del viewport */
+        background-color: rgb(96, 123, 125);
+        /* especifica el color de fondo */
+        border: 3px rgb(247, 240, 109) double;
+        /* especifica el borde */
+
+
+    }
+
+    /* Clase para la imagen que acompaña a la información del mapa */
+
+    .imgmapinfo{
+        max-height: 25vw;
+        /* especifica el alto máximo de la imagen, 25% del viewport */
+        float: left;
+        /* flota el elemento a la izquierda */
+
+  
+    }
+
+
+    /* Clase para el titulo informativo del mapa interactivo */
+    .text-title{
+       display: flex;
+       /* especifica como se presenta el titulo */
+        width: 50vw;
+        /* ancho del campo de texto del título */
+        justify-content: center;
+        /* especifica como se justifica el texto */
+        color: rgb(187, 170, 75);
+        /* especifica el color del texto */
+        font-family: 'Spectral', serif;
+        /*La familia de la fuente*/
+        font-size: x-large;
+        /*el tamaño de la fuente*/
+    }
+
+
+    /* Clase para el texto informativo del mapa interactivo */
+    .text-info{
+        display: flex;
+        /* especificación de cómo se presenta el bloque de texto */
+        flex-wrap: wrap;
+        /* especifica como se manejan múltiples elementos, en este caso en varias líneas para dar ese orden de título y texto */
+        align-items: center;
+        /* especificación de cómo se alinean el texto */
+        justify-content: flex-end;
+        /* Especifica como se alinean los elementos en el flex */
+        width: 50vw;
+        /* especifica el ancho, 50% del viewport */
+        padding-right: 2.5vw;
+        color: rgb(24, 20, 0);
+        /* especifica el color del texto */
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: medium;
+        /*El tamaño de la fuente*/
+    }
+
+ 
+
+
+
+
+    /* clases para las partes del mapa */
+
+
+    .altus {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:21vw;
+        /* especifica el ancho del viewport */
+        bottom:58%;
+        /* especifica la distancia desde abajo */
+        left:22%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+       /* texto encima de la parte del mapa */
+       .atooltip .atext{
+        visibility: hidden;
+        /* indica que no se vea el texto */
+        color: rgb(247, 240, 109);
+        /* color del texto */
+        text-align: center;
+        /* alineación del texto */
+        text-shadow: 2px 2px 2px rgb(24, 20, 0);
+        /* sombra del texto para hacer contraste con el fondo */
+        font-family: 'Spectral', 'serif';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*El tamaño de la fuente*/
+        position: absolute;
+        /* indica que se ubique en una posición especifica */
+        bottom:66%;
+        /* especifica la distancia desde abajo */
+        left:33%;
+        /* especifica la distancia desde la izquierda */
+        z-index: 3;
+        /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+        transition: visibility 0s ease 1s; 
+        /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .caelid {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:22vw;
+        /* especifica el ancho del viewport */
+        bottom:16%;
+        /* especifica la distancia desde abajo */
+        left:49%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .ctooltip .ctext{
+        visibility: hidden;
+        /* indica que no se vea el texto */
+        color: rgb(247, 240, 109);
+        /* color del texto */
+        text-align: center;
+        /* alineación del texto */
+        text-shadow: 2px 2px 2px rgb(24, 20, 0);
+        /* sombra del texto para hacer contraste con el fondo */
+        font-family: 'Spectral', 'serif';
+        /*La familia de la fuente*/
+        font-size: small;
+        /*El tamaño de la fuente*/
+        position: absolute;
+        /* indica que se ubique en una posición especifica */
+        bottom:23%;
+        /* especifica la distancia desde abajo */
+        left:58%;
+        /* especifica la distancia desde la izquierda */
+        z-index: 3;
+        /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+        transition: visibility 0s ease 1s; 
+        /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .consecrated {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:11vw;
+        /* especifica el ancho del viewport */
+        bottom:69%;
+        /* especifica la distancia desde abajo */
+        left:51%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .cstooltip .cstext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: x-small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:75%;
+            /* especifica la distancia desde abajo */
+            left:50%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .dragon {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:16vw;
+        /* especifica el ancho del viewport */
+        bottom:26%;
+        /* especifica la distancia desde abajo */
+        left:53%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+        /* texto encima de la parte del mapa */
+        .dbtooltip .dbtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineacion del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: x-small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:28%;
+            /* especifica la distancia desde abajo */
+            left:57%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .limb {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:22.5vw;
+        /* especifica el ancho del viewport */
+        bottom:13%;
+        /* especifica la distancia desde abajo */
+        left:28.5%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .ltooltip .ltext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:22%;
+            /* especifica la distancia desde abajo */
+            left:37%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .liurnia {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:26vw;
+        /* especifica el ancho del viewport */
+        bottom:28%;
+        /* especifica la distancia desde abajo */
+        left:11%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .lltooltip .lltext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:41%;
+            /* especifica la distancia desde abajo */
+            left:19%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .gelmir {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:11.5vw;
+        /* especifica el ancho del viewport */
+        bottom:63%;
+        /* especifica la distancia desde abajo */
+        left:19%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .mgtooltip .mgtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:67%;
+            /* especifica la distancia desde abajo */
+            left:22%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .mountain {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:16vw;
+        /* especifica el ancho del viewport */
+        bottom:72%;
+        /* especifica la distancia desde abajo */
+        left:64%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .mogtooltip .mogtext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: x-small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:79%;
+            /* especifica la distancia desde abajo */
+            left:68%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+    .weeping {
+        position:absolute;
+        /* especifica que se ubiquen en una posición exacta dentro del contenedor */
+        z-index:2;
+        /* especifica la posición en el eje z, encima de otros elementos */
+        width:14vw;
+        /* especifica el ancho del viewport */
+        bottom:0.5%;
+        /* especifica la distancia desde abajo */
+        left:34.5%;
+        /* especifica la distancia desde la izquierda */
+        
+        /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 2.5px rgb(190, 139, 10)) 
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color */
+                drop-shadow(-1px -1px 2.5px rgb(190, 139, 10));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 1s; 
+        /* retardo de 1 segundos para que se mantenga el color del estado activo, útil para móviles */
+    }
+
+        /* texto encima de la parte del mapa */
+        .wptooltip .wptext{
+            visibility: hidden;
+            /* indica que no se vea el texto */
+            color: rgb(247, 240, 109);
+            /* color del texto */
+            text-align: center;
+            /* alineación del texto */
+            text-shadow: 2px 2px 2px rgb(24, 20, 0);
+            /* sombra del texto para hacer contraste con el fondo */
+            font-family: 'Spectral', 'serif';
+            /*La familia de la fuente*/
+            font-size: x-small;
+            /*El tamaño de la fuente*/
+            position: absolute;
+            /* indica que se ubique en una posición especifica */
+            bottom:8%;
+            /* especifica la distancia desde abajo */
+            left:39%;
+            /* especifica la distancia desde la izquierda */
+            z-index: 3;
+            /* indica la posición en el eje z, se ubica encima de las partes del mapa */
+            transition: visibility 0s ease 1s; 
+            /* esta transición permite que haya un retraso y se mantenga el texto 1 segundos, sirve para móvil */
+        }
+
+
+    /* clase para el active de las partes del mapa */
+    /* al momento de clickearse determina lo que pasa */
+    /* especifica para móvil, siendo que solo se puede clickear y no hacer hover */
+    /* se incluyen varias clases que hacen lo mismo */
+    .altus:active,
+    .caelid:active,
+    .consecrated:active,
+    .dragon:active,
+    .limb:active,
+    .liurnia:active,
+    .gelmir:active,
+    .mountain:active,
+    .weeping:active {
+
+         /* una regla especifica que ayuda a que las imágenes en png tengan un reborde en el contorno, no en los bordes de la imagen */
+        filter: drop-shadow(1px 1px 5px rgb(247, 240, 109))
+                /* especifica que caiga una sombra hacia abajo y la derecha (ejes positivos), los tamaños, el tamaño del blur y el color  */
+                drop-shadow(-1px -1px 5px rgb(247, 240, 109));
+                /* especifica que caiga una sombra hacia arriba y la izquierda (ejes negativos), los tamaños, el tamaño del blur y el color */
+        transition: filter 0s ease 0s;
+        /* transición instantánea, para que se mantenga el retraso en el otro efecto  */
+    }
+
+    /* clase para el texto de las partes del mapa */
+    /* especifica para móvil, siendo que solo se puede clickear y no hacer hover */
+    /* se incluyen varias clases que hacen lo mismo en active */
+    .atooltip:active .atext,
+    .ctooltip:active .ctext,
+    .cstooltip:active .cstext,
+    .dbtooltip:active .dbtext,
+    .ltooltip:active .ltext,
+    .lltooltip:active .lltext,
+    .mgtooltip:active .mgtext,
+    .mogtooltip:active .mogtext,
+    .wptooltip:active .wptext
+     {
+         /* cambia la visibilidad al momento de hacer hover */
+        visibility: visible;
+        transition: visibility 0s ease 0s;
+        /* transición instantánea, permite el retardo del texto en desaparecer */
+      }
+
+    .mapadiv{
+        z-index: 4;
+    }
+
+    /* La clase para los créditos estáticos flotantes. Se posiciona en la parte inferior derecha gracias a ubicarlo con bottom a 0vw y right a 1vw.
+    Fixed lo bloquea en ese lugar, encima de la página */
+    .fixed {
+        font-family: 'Lucida Sans';
+        /*La familia de la fuente*/
+        font-size: x-small;
+        /*tamaño de la fuente*/
+        color: rgb(187, 170, 75);
+        /*color de la fuente*/
+        background-color: rgb(24, 20, 0);
+        /*color del fondo que contrasta*/
+        position: fixed;
+        /*posición bloqueada del texto*/
+        bottom: 0vw;
+        /*distancia hasta el borde inferior*/
+        right: 1vw;
+        /*distancia hasta el borde derecho*/
+    }
+}

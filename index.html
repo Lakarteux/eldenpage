@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- Comentarios por Andres Leonardo Escobar Pinzon:
+    -Los detalles sobre el diseño están en el css
+    -------------------------------------------------------------
+    Aquí se establece el tipo de documento -->
+<html>
+
+    <head>
+        <!-- especificación del lenguaje y el formato de caracteres de la pagina web -->
+        <meta lang="es">
+        <meta charset="UTF-8">
+        <!-- Se coloca este tag meta para que funcione correctamente el responsive. indicando que se debe adaptar al ancho del dispositivo y la escala inicial -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Referencia a la hoja de estilos -->
+        <link rel="stylesheet" href="estilos.css">
+        <!-- conexion con las fuentes de Google para la fuente personalizada -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap" rel="stylesheet">
+        <!-- Acá se usa title para establecer el nombre de la página en el head -->
+        <title>Las Tierras Intermedias</title>
+    </head>
+
+    <body>
+        <!-- header que empaqueta a todo el menú de navegación -->
+        <header class="top-nav">
+        <!--Se pone el título de la página como un link que se abre en la misma pestaña con el atributo target. El estilo esta dado hacia esta
+        etiqueta en específico en la hoja de estilos -->
+        <h1><a href="index.html" target="_self">Las Tierras Intermedias</a></h1>
+
+        <!-- Se incluye este código para colocar un chechbox estilado que funcione como menú de hamburguesa sin necesidad de javascript -->
+        <input id="menu-toggle" type="checkbox"/>
+        <!-- contenedor del botón del menú hamburguesa -->
+        <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label> 
+        <!-- se usa nav para hacer un menú de navegación. Van en una lista para que funcionen dentro del menú hamburguesa -->
+            <ul class="menu">
+                <!-- links dentro de una lista, con especificaciones de clase para estilos -->
+                <li><a class="item-menu" href="place.html" target="_self">El lugar</a></li>
+                <li><a class="item-menu" href="char.html" target="_self">Personajes</a></li>
+                <li><a class="item-menu" href="activ.html" target="_self">Eventos</a></li>
+                <li><a class="item-menu" href="history.html" target="_self">Historia</a></li>
+                <li><a class="item-menu" href="map.html" target="_self">Mapa Interactivo</a></li>
+                <li><a class="item-menu" href="credits.html" target="_self">Créditos</a></li>
+            </ul>
+           
+        </nav>        
+        </header>
+
+          <!-- Acá uso un div para separar otra sección, donde va una introducción con su propia clase css y con varias imágenes -->
+        <div>
+            <!-- párrafo de texto de introducción -->
+            <p class="intro">
+                Esta es una página donde se habla sobre las Tierras Intermedias,
+                lugar de ambientación del juego Elden Ring.
+                En esta página se presentarán sus ubicaciones, algunos personajes
+                que los habitan, eventos e historia.
+                También se incluyen imágenes y créditos a los sitios de donde
+                ha salido la información
+            </p>
+            <!-- div con clase para organizar imágenes y un id para llegar desde el mapa de navegación -->
+            <div class="imgsindx" id="imagesindex">
+                <!-- Estas imágenes son mías y por eso las referencia en dirección relativa. trate de nombrarlas de manera sencilla y organizada -->
+                <a href="images/indeximg.jpg" target="_blank"><img class="imgind" src="images/indeximg.jpg"></a>
+                <a href="images/ind2.jpg" target="_blank"><img class="imgind" src="images/ind2.jpg"></a>
+                <a href="images/ind3.jpg" target="_blank"><img class="imgind" src="images/ind3.jpg"></a>
+                <a href="images/ind4.jpg" target="_blank"><img class="imgind" src="images/ind4.jpg"></a>
+                <a href="images/ind5.jpg" target="_blank"><img class="imgind" src="images/ind5.jpg"></a>
+                <a href="images/ind6.jpg" target="_blank"><img class="imgind" src="images/ind6.jpg"></a>
+                <a href="images/ind7.jpg" target="_blank"><img class="imgind" src="images/ind7.jpg"></a>
+                <a href="images/ind8.jpg" target="_blank"><img class="imgind" src="images/ind8.jpg"></a>
+                <a href="images/ind9.jpg" target="_blank"><img class="imgind" src="images/ind9.jpg"></a>
+                <a href="images/ind10.jpg" target="_blank"><img class="imgind" src="images/ind10.jpg"></a>
+                <a href="images/ind11.jpg" target="_blank"><img class="imgind" src="images/ind11.jpg"></a>
+                <a href="images/ind12.jpg" target="_blank"><img class="imgind" src="images/ind12.jpg"></a>
+                <a href="images/ind13.jpg" target="_blank"><img class="imgind" src="images/ind13.jpg"></a>
+                <a href="images/ind14.jpg" target="_blank"><img class="imgind" src="images/ind14.jpg"></a>
+                <a href="images/ind15.jpg" target="_blank"><img class="imgind" src="images/ind15.jpg"></a>
+                <a href="images/ind16.jpg" target="_blank"><img class="imgind" src="images/ind16.jpg"></a>
+                <a href="images/ind17.jpg" target="_blank"><img class="imgind" src="images/ind17.jpg"></a>
+                <a href="images/ind18.jpg" target="_blank"><img class="imgind" src="images/ind18.jpg"></a>
+                <a href="images/ind19.jpg" target="_blank"><img class="imgind" src="images/ind19.jpg"></a>
+                <a href="images/ind20.jpg" target="_blank"><img class="imgind" src="images/ind20.jpg"></a>
+                <a href="images/ind21.jpg" target="_blank"><img class="imgind" src="images/ind21.jpg"></a>
+            </div>
+        </div>
+
+        <!-- Este elemento es una marca de créditos, que está diseñada para que se mantenga estática. Además, los estilos hacen que se pueda ver -->
+        <div>
+            <p class="fixed">Hecho por Andres Leonardo Escobar Pinzon - 2022</p>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- especificación del lenguaje y el formato de caracteres de la página web -->
+    <meta lang="es">
+    <meta charset="UTF-8">
+    <!-- Se coloca este tag meta para que funcione correctamente el responsive. indicando que se debe adaptar al ancho del dispositivo y la escala inicial -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Referencia a la hoja de estilos -->
+    <link rel="stylesheet" href="estilos.css">
+    <!-- conexión con las fuentes de Google para la fuente personalizada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap" rel="stylesheet"> 
+    <!-- Acá se usa title para establecer el nombre de la página en el head -->
+    <title>Las Tierras Intermedias</title>
+</head>
+<!-- Se usa el mismo menú en otros documentos -->
+<body>
+    <!-- header que empaqueta a todo el menú de navegación -->
+    <header class="top-nav">
+        <!--Se pone el título de la página como un link que se abre en la misma pestaña con el atributo target. El estilo esta dado hacia esta
+        etiqueta en específico en la hoja de estilos -->
+        <h1><a href="index.html" target="_self">Las Tierras Intermedias</a></h1>
+
+        <!-- Se incluye este código para colocar un chechbox estilado que funcione como menú de hamburguesa sin necesidad de javascript -->
+        <input id="menu-toggle" type="checkbox"/>
+        <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label> 
+        <!-- se usa nav para hacer un menú de navegación. Van en una lista para que funcionen dentro del menú hamburguesa -->
+            <ul class="menu">
+                 <!-- links dentro de una lista, con especificaciones de clase para estilos -->
+                <li><a class="item-menu" id="active" href="place.html" target="_self">El lugar</a></li>
+                <li><a class="item-menu" href="char.html" target="_self">Personajes</a></li>
+                <li><a class="item-menu" href="activ.html" target="_self">Eventos</a></li>
+                <li><a class="item-menu" href="history.html" target="_self">Historia</a></li>
+                <li><a class="item-menu" href="map.html" target="_self">Mapa Interactivo</a></li>
+                <li><a class="item-menu" href="credits.html" target="_self">Créditos</a></li>
+            </ul>
+           
+        </nav>        
+        </header>
+
+<div>
+    <!--div con una imagen adentro, con clase para ubicarla al lado derecho  -->
+    <div class="imgsintro"><img class="imgsize" src="images/map.jpg" id="mapa"></div>
+        <p class="text-int">
+            <!-- esta clase me permite determinar el tamaño y lugar de esta imagen para que se vea al lado del texto  -->
+            
+            Las Tierras Intermedias es el sitio donde se desarrolla el juego y es 
+            entendido como un gran continente con diferentes islas y zonas. Estas zonas, 
+            además de estar pobladas por criaturas de diversos tipos, tienen semidioses que las gobiernan. 
+            <br>
+            <br>
+            Estas son las zonas principales: 
+        </p>
+
+    <!-- Acá hice uso de un sistema de párrafos con imágenes para los diferentes lugares.  usan una clase para los títulos y otra
+    para los textos. estas imágenes están dentro de una etiqueta de enlace que dirige a sus originales.
+    Además, permite que se abran en una nueva pestaña, para poder verlas mejor. -->
+        <p class="title" id="necrolimbo">
+            Necrolimbo:
+        </p>
+        <p class="text">
+            Esta es una zona que se ubica hacia abajo del mapa. "Es una zona exuberante y expansiva del Tenebrae Demesne.
+            Arboles dorados, hierba alta, y arbustos proveen suficiente sustento a la fauna local, que incluye jabalíes, ovejas, cabras y roedores
+            además de criaturas voladoras como águilas y búhos. Fauna más siniestra y agresiva también existe, y los que se aventuren deben estar preparados 
+            para combatirlos."
+            <br>
+            <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/limgrave_location_map_elden_ring_wiki_guide_2560px.jpg?v=1648026198314" target="_blank">
+                <img class="imgnml" src="images/l.jpg">
+            </a>
+        </p>
+
+        <p class="title" id="peninsula">
+        Península del Llanto:
+        </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia abajo del mapa. "Es una larga península que se desprende de la masa de tierra principal de Necrolimbo en el sur,
+        conectada solo por el Puente de Sacrificio. Es una tierra hosca, acosada por una atmosfera de culpa y perdida. El asediado Castillo Morne yace en ruinas al sur."
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/weeping-peninsula_location_map_elden_ring_wiki_guide_2560px.jpg?v=1648027911695" target="_blank">
+            <img class="imgnml" src="images/wp.jpg">
+        </a>
+    </p>
+
+    <p class="title" id="liurnia">
+        Liurnia de los Lagos:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia la mitad del mapa, arriba de Necrolimbo "Con sus aguas poco profundas y vastos humedales, la región de Liurnia es acosada
+        por el hundimiento gradual de la mayoría de su masa.  Con sus bosques perpetuamente cubiertos de niebla, se pueden escuchar sonidos espeluznantes de 
+        campanas en la distancia."
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/liurnia_of_the_lakes_location_map_elden_ring_wiki_guide_2560px.jpg?v=1648030260781" target="_blank">
+            <img class="imgnml" src="images/ll.jpg">
+        </a>
+    </p>
+
+    <p class="title" id="caelid">
+        Caelid:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia abajo del mapa, a la derecha de Necrolimbo "Un yermo árido que se ve afectado por 
+        la podredumbre escarlata, mutando su flora y fauna, bañando el ambiente en un tono mortal.  Muerte y decadencia son vistas muy frecuentes aquí."
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/caelid_map_elden_ring_wiki_guide_2560px.jpg?v=1646261726988" target="_blank">
+            <img class="imgnml" src="images/c.jpg">
+        </a>
+    </p>
+
+    <p class="title"id="meseta">
+        Meseta Altus:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia arriba del mapa, arriba y a la derecha de Liurnia de los Lagos "Donde se puede encontrar la base del Árbol Áureo y sirve como
+        entrada a la capital real, Leyndell. Cicatrices de la fragmentación y la guerra permanecen aparentes hasta este día"
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/main_altus_plateau_region_location_map_elden_ring_wiki_guide_2560px.jpg?v=1647569990674" target="_blank">
+            <img class="imgnml" src="images/ap.jpg">
+        </a>
+    </p>
+
+    <p class="title"id="monte">
+        Monte Gelmir:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia arriba del mapa, arriba de Liurnia de los Lagos "Es una región volcánica al oeste de la Meseta Altus. Esta tierra ha 
+        visto muchas batallas y la lucha continua"
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/mt_gelmir_region_location_map_elden_ring_wiki_guide_2560px.jpg?v=1647570134828" target="_blank">
+            <img class="imgnml" src="images/mg.jpg">
+        </a>
+    </p>
+
+    <p class="title"id="tumulo">
+        Túmulo de Dragones:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia la mitad del mapa, arriba de Caelid "Es una gran extensión de mesetas aislada de la masa principal de Caelid. 
+        Es un santuario creado por los dragones que escaparon de la podredumbre escarlata que asola las tierras del sur"
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/dragonbarrow_map_elden_ring_wiki_guide_2560px.jpg?v=1646261846591" target="_blank">
+            <img class="imgnml" src="images/db.jpg">
+        </a>
+    </p>
+
+    <p class="title"id="pico">
+        Pico de los Gigantes:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia arriba del mapa, encima de Meseta Altus "Las tierras de los gigantes no son más. Devastadas por la Fragmentación, su forja yace fría
+        y sus cuerpos congelados están esparcidos por la región desolada, ahora solo habitable por espíritus"
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/mountaintops_of_the_giants_location_map_elden_ring_wiki_guide_2560px.jpg?v=1647592424971" target="_blank">
+            <img class="imgnml" src="images/mog.jpg">
+        </a>
+    </p>
+
+    <p class="title" id="campo">
+        Campo de Nieve Consagrado:
+    </p>
+    <p class="text">
+        Esta es una zona que se ubica hacia arriba del mapa, al lado izquierdo de Pico de los Gigantes "La tierra prometida de los Albinauricos yace más allá, y aquellos
+        que enfrentan a sus sombríos asesinos, pueden obtener acceso al Árbol Hierático de Miquella"
+        <br>
+        <a href="https://eldenring.wiki.fextralife.com/file/Elden-Ring/consecrated_snowfield_location_map_elden_ring_wiki_guide_1920px.jpg?v=1647592977299" target="_blank">
+            <img class="imgnml" src="images/cs.jpg">
+        </a>
+    </p>
+
+</div>
+
+
+  <!-- Este elemento es una marca de créditos, que está diseñada para que se mantenga estática. Además, los estilos hacen que se pueda ver -->
+<div>
+    <p class="fixed">Hecho por Andres Leonardo Escobar Pinzon - 2022</p>
+</div>
+    
+</body>
+</html>

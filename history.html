@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- especificación del lenguaje y el formato de caracteres de la página web -->
+    <meta lang="es">
+    <meta charset="UTF-8">
+    <!-- Se coloca este tag meta para que funcione correctamente el responsive. indicando que se debe adaptar al ancho del dispositivo y la escala inicial -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Referencia a la hoja de estilos -->
+    <link rel="stylesheet" href="estilos.css">
+        <!-- conexión con las fuentes de Google para la fuente personalizada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap" rel="stylesheet"> 
+    <!-- Acá se usa title para establecer el nombre de la página en el head -->
+    <title>Las Tierras Intermedias</title>
+</head>
+<body>
+     <!-- header que empaqueta a todo el menú de navegación -->
+    <header class="top-nav">
+        <!--Se pone el título de la página como un link que se abre en la misma pestaña con el atributo target. El estilo esta dado hacia esta
+        etiqueta en específico en la hoja de estilos -->
+        <h1><a href="index.html" target="_self">Las Tierras Intermedias</a></h1>
+
+        <!-- Se incluye este código para colocar un chechbox estilado que funcione como menú de hamburguesa sin necesidad de javascript -->
+        <input id="menu-toggle" type="checkbox"/>
+        <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label> 
+        <!-- se usa nav para hacer un menú de navegación. Van en una lista para que funcionen dentro del menú hamburguesa -->
+            <ul class="menu">
+                <li><a class="item-menu" href="place.html" target="_self">El lugar</a></li>
+                <li><a class="item-menu" href="char.html" target="_self">Personajes</a></li>
+                <li><a class="item-menu" href="activ.html" target="_self">Eventos</a></li>
+                <li><a class="item-menu" id="active" href="history.html" target="_self">Historia</a></li>
+                <li><a class="item-menu" href="map.html" target="_self">Mapa Interactivo</a></li>
+                <li><a class="item-menu" href="credits.html" target="_self">Créditos</a></li>
+            </ul>
+        </nav>        
+        </header>
+
+<div>
+    <div class="imgsintro">
+                    <!-- Aquí probe a colocar un gif del juego y que no desentonara. -->
+        <a href="https://c.tenor.com/cymGp81a9HcAAAAd/elden-ring-shattered.gif" target="_blank" id="anillo">
+        <img class="imgsize" src="images/ring.gif">
+        </a>
+    </div>
+        <p class="text-int">
+            En las Tierras Intermedias se desarrolla una historia sobre las luchas entre una familia de Dioses por un trono. Pocas cosas
+            quedan claras sobre la historia en general, pero hay detalles que se pueden sacar de la información que se nos da en el juego.
+            <br>
+            <br>
+        </p>
+
+        <!-- EL texto en forma de lista con clases para que tenga estilo visual -->
+        <ul class="history">
+            <li class="text-li">
+                Robo de la Runa de la Muerte
+            </li>
+                <li class="text-lis">
+                   Un grupo de asesinos en una noche, robo la Runa de la Muerte, elemento que le daba mortalidad al mundo, a la vez que poder capaz de matar a los dioses.
+                </li> 
+
+            <li class="text-li">
+                Asesinato de Godwyn
+            </li>
+                <li class="text-lis">
+                    Con ella, mataron a Godwyn el Dorado y luego continuaron con otros semi-dioses.
+                </li> 
+
+            <li class="text-li">
+                La Fragmentación
+            </li>
+                <li class="text-lis">
+                En cierto momento del caos, ocurrió la Fragmentación, momento donde el Anillo de Elden se rompió en pedazos y dejo de dar su poder a los diferentes habitantes del mundo
+                </li> 
+
+            <li class="text-li">
+                Guerra de la Fragmentación
+            </li>
+                <li class="text-lis">
+                    Debido a la muerte de Godwyn y la Fragmentación, se desato una guerra por los fragmentos del anillo, entre sus hijos.
+                </li> 
+
+            <li class="text-li">
+                Pelea entre Malenia y Radahn
+            </li>
+                <li class="text-lis">
+                    Malenia, Espada de Miquella y Radahn, Azote de las Estrellas fueron los más poderosos en quedar. Pero aun con lo fuerte que fue su batalla, ninguno quedo victorioso
+                </li>
+
+            <li class="text-li">
+                El Mundo
+            </li>
+                <li class="text-lis">
+                   Luego de esto, el mundo quedo en espera de un Señor de Elden, digno de portar el poder del Anillo de Elden
+                </li>
+
+        </ul>
+
+</div>
+
+
+ <!-- Este elemento es una marca de créditos, que está diseñada para que se mantenga estática. Además, los estilos hacen que se pueda ver -->
+<div>
+    <p class="fixed">Hecho por Andres Leonardo Escobar Pinzon - 2022</p>
+</div>
+    
+</body>
+</html>
+

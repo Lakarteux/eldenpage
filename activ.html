@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- especificación del lenguaje y el formato de caracteres de la página web -->
+    <meta lang="es">
+    <meta charset="UTF-8">
+    <!-- Se coloca este tag meta para que funcione correctamente el responsive. indicando que se debe adaptar al ancho del dispositivo y la escala inicial -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Referencia a la hoja de estilos -->
+    <link rel="stylesheet" href="estilos.css">
+    <!-- conexion con las fuentes de Google para la fuente personalizada -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap" rel="stylesheet"> 
+    <!-- Acá se usa title para establecer el nombre de la página en el head -->
+    <title>Las Tierras Intermedias</title>
+</head>
+<body>
+    <!-- header que empaqueta a todo el menú de navegación -->
+    <header class="top-nav">
+        <!--Se pone el título de la página como un link que se abre en la misma pestaña con el atributo target. El estilo esta dado hacia esta
+        etiqueta en específico en la hoja de estilos -->
+        <h1><a href="index.html" target="_self">Las Tierras Intermedias</a></h1>
+
+        <!-- Se incluye este código para colocar un chechbox estilado que funcione como menú de hamburguesa sin necesidad de javascript -->
+        <input id="menu-toggle" type="checkbox"/>
+        <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label> 
+        <!-- se usa nav para hacer un menú de navegación. Van en una lista para que funcionen dentro del menú hamburguesa -->
+            <ul class="menu">
+                <li><a class="item-menu" href="place.html" target="_self">El lugar</a></li>
+                <li><a class="item-menu" href="char.html" target="_self">Personajes</a></li>
+                <li><a class="item-menu" id="active" href="activ.html" target="_self">Eventos</a></li>
+                <li><a class="item-menu" href="history.html" target="_self">Historia</a></li>
+                <li><a class="item-menu" href="map.html" target="_self">Mapa Interactivo</a></li>
+                <li><a class="item-menu" href="credits.html" target="_self">Créditos</a></li>
+            </ul>
+           
+        </nav>        
+        </header>
+
+<div>
+
+        <p class="text-int">
+            En las Tierras Intermedias al ser un lugar desolado, los eventos que ocurren son vestigios de lo que pudieron ser en su tiempo. Estas son algunas de las actividades:
+        </p>
+
+        <!-- Al ser menos elementos pensé en probar colocarlos en una lista, para hacer uso de los puntos de estas listas.-->
+        <ul class="history">
+            <li class="text-li" id="festival">
+                Festival de Radahn
+            </li>
+                <!-- Aquí, a pesar de que esta parte también hace parte de la misma lista, se ve diferente y no tiene punto,
+                por como esta en el css. Podría haber ido en un párrafo, pero quería intentar ver como funcionaba -->
+                <li class="text-lis">
+                    Un festival anual donde diferentes guerreros se enfrentan contra Radahn, Azote de las Estrellas, semidios caído en desgracia, en busca de una muerte digna.
+                </li>  
+                <!-- Se usa la misma clase de css por lo funcional que es para mostrar imágenes no muy grandes ni pequeñas -->
+            <a href="images/festival.jpg" target="_blank">
+                <img class="imgnml" src="images/festival.jpg">
+            </a> 
+           
+
+            <li class="text-li" id="mansion">
+                Mansión del Volcán
+            </li>
+                <li class="text-lis">
+                    Un grupo de traidores al Árbol Aurero que buscan el poder asesinando a otros Sin-Luz y realizando tareas.
+                </li>
+                <a href="images/manor.jpg" target="_blank">
+                    <img class="imgnml" src="images/manor.jpg">
+                </a> 
+            
+            <li class="text-li" id="mesa">
+                Mesa de la Gracia Perdida
+            </li>
+                <li class="text-lis">
+                    Un grupo de héroes, refugiados y vagabundos errantes que se juntan en la paz de este lugar en búsqueda de convertirse en el nuevo Señor de Elden
+                </li>
+                <!-- Algunas imágenes las tenia, las otra tuve que sacarlas de internet -->
+                <a href="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/02/Elden-Ring-Roundtable-Hold.jpg?q=50&fit=contain&w=750&h=375&dpr=1.5" target="_blank">
+                    <img class="imgnml" src="https://static1.thegamerimages.com/wordpress/wp-content/uploads/2022/02/Elden-Ring-Roundtable-Hold.jpg?q=50&fit=contain&w=750&h=375&dpr=1.5">
+                </a> 
+
+            <li class="text-li" id="seguidores">
+               Seguidores de Ranni
+            </li>
+                <li class="text-lis">
+                    Servidores de la Bruja Ranni que la ayudan en busca de un tesoro escondido y de su cuerpo físico perdido.
+                </li>
+                <a href="images/ranni.jpg" target="_blank">
+                    <img class="imgnml" src="images/ranni.jpg">
+                </a> 
+        </ul>
+
+        
+</div>
+
+
+ <!-- Este elemento es una marca de créditos, que está diseñada para que se mantenga estática. Además, los estilos hacen que se pueda ver -->
+<div>
+    <p class="fixed">Hecho por Andres Leonardo Escobar Pinzon - 2022</p>
+</div>
+    
+</body>
+</html>
+

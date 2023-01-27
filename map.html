@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- Comentarios por Andres Leonardo Escobar Pinzon:
+    -Los detalles sobre el diseño están en el css
+    -------------------------------------------------------------
+    Aquí se establece el tipo de documento -->
+<html>
+
+    <head>
+        <!-- especificación del lenguaje y el formato de caracteres de la pagina web -->
+        <meta lang="es">
+        <meta charset="UTF-8">
+        <!-- Se coloca este tag meta para que funcione correctamente el responsive. indicando que se debe adaptar al ancho del dispositivo y la escala inicial -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Referencia a la hoja de estilos -->
+        <link rel="stylesheet" href="estilos.css">
+        <!-- conexion con las fuentes de Google para la fuente personalizada -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap" rel="stylesheet">
+        <!-- Acá se usa title para establecer el nombre de la página en el head -->
+        <script src="mapa.js"></script>
+        <!-- El script que especifica la interacción con el mapa -->
+        <title>Las Tierras Intermedias</title>
+
+    </head>
+
+    <body>
+        <!-- header que empaqueta a todo el menú de navegación -->
+        <header class="top-nav">
+        <!--Se pone el título de la página como un link que se abre en la misma pestaña con el atributo target. El estilo esta dado hacia esta
+        etiqueta en específico en la hoja de estilos -->
+        <h1><a href="index.html" target="_self">Las Tierras Intermedias</a></h1>
+
+        <!-- Se incluye este código para colocar un chechbox estilado que funcione como menú de hamburguesa sin necesidad de javascript -->
+        <input id="menu-toggle" type="checkbox"/>
+        <!-- contenedor del botón del menú hamburguesa -->
+        <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label> 
+        <!-- se usa nav para hacer un menú de navegación. Van en una lista para que funcionen dentro del menú hamburguesa -->
+            <ul class="menu">
+                <!-- links dentro de una lista, con especificaciones de clase para estilos -->
+                <li><a class="item-menu" href="place.html" target="_self">El lugar</a></li>
+                <li><a class="item-menu" href="char.html" target="_self">Personajes</a></li>
+                <li><a class="item-menu" href="activ.html" target="_self">Eventos</a></li>
+                <li><a class="item-menu" href="history.html" target="_self">Historia</a></li>
+                <li><a class="item-menu" href="map.html" target="_self">Mapa Interactivo</a></li>
+                <li><a class="item-menu" href="credits.html" target="_self">Créditos</a></li>
+            </ul>
+           
+        </nav>        
+        </header>
+
+          <!-- Acá uso un div para separar otra sección, donde va una introducción con su propia clase css y con varias imágenes -->
+        <div class="mapadiv">
+
+            <div class="mapcanvas">
+                <!--Imagen que se usa para el fondo del mapa interactivo. Con clase para determinar su funcionamiento-->
+                <img class="mapint" src="images/map.jpg" alt="Mapa Tierras Intermedias">
+                <!--Imagenes de las zonas-->
+                <!-- Se usan clases para esconder y mostrar texto cuando se haga hover -->
+                <!-- se indica que al clickear el texto o la imagen, lleve a la parte de abajo -->
+                <a href="#Info" class="atooltip" target="_self" onclick="Altus()" ><img class="altus" onclick="Altus()" src="mapimgs/ap.png" alt="Altus Plateau" id="altusmap">
+                    <span class="atext">Meseta<br>Altus</span>
+                </a>
+                <a href="#Info" class="ctooltip" target="_self" onclick="Caelid()" ><img class="caelid" onclick="Caelid()" src="mapimgs/c.png" alt="Caelid" id="caelidmap">
+                    <span class="ctext">Caelid</span>
+                </a>
+                <a href="#Info" class="cstooltip" target="_self" onclick="Consecrated()" ><img class="consecrated" onclick="Consecrated()" src="mapimgs/cs.png" alt="Consecrated Snowfield" id="consecratedmap">
+                    <span class="cstext">Campo de Nieve<br>Consagrado</span>
+                </a>
+                <a href="#Info" class="dbtooltip" target="_self" onclick="Dragon()" ><img class="dragon" onclick="Dragon()" src="mapimgs/db.png" alt="Dragonbarrow" id="dragonmap">
+                    <span class="dbtext">Túmulo de<br>Dragones</span>
+                </a>
+                <a href="#Info" class="ltooltip" target="_self" onclick="Limb()" ><img class="limb" onclick="Limb()" src="mapimgs/l.png" alt="Limbgrave" id="limbmap">
+                    <span class="ltext">Necrolimbo</span>
+                </a>
+                <a href="#Info" class="lltooltip" target="_self" onclick="Liurnia()" ><img class="liurnia" onclick="Liurnia()" src="mapimgs/ll.png" alt="Liurnia" id="liurniamap">
+                    <span class="lltext">Liurnia de<br>los lagos</span>
+                </a>
+                <a href="#Info" class="mgtooltip" target="_self" onclick="Gelmir()" ><img class="gelmir" onclick="Gelmir()" src="mapimgs/mg.png" alt="Mt Gelmir"id="gelmirmap">
+                    <span class="mgtext">Monte<br>Gelmir</span>
+                </a>
+                <a href="#Info" class="mogtooltip" target="_self" onclick="Mountain()" ><img class="mountain" onclick="Mountain()" src="mapimgs/mog.png" alt="Mountaintops" id="mountainmap">
+                    <span class="mogtext">Pico de<br>los Gigantes</span>
+                </a>
+                <a href="#Info" class="wptooltip" target="_self" onclick="Weeping()" ><img class="weeping" onclick="Weeping()" src="mapimgs/wp.png" alt="Weeping Peninsula" id="weepingmap">
+                    <span class="wptext">Península<br>del Llanto</span>
+                </a>
+            </div>
+
+                <!--Párrafo con información sobre el lugar seleccionado .-->
+            <div class="mapinfo" id="Info">
+                <img class="imgmapinfo" src="images/che.jpg" alt=".">
+                <p class="text-info"><br><br>
+                Mapa interactivo<br>Haz clic en alguno de los pequeños botones para ver información sobre el lugar.</p>
+            </div>   
+
+        <!-- Este elemento es una marca de créditos, que está diseñada para que se mantenga estática. Además, los estilos hacen que se pueda ver -->
+        <div>
+            <p class="fixed">Hecho por Andres Leonardo Escobar Pinzon - 2022</p>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- especificación del lenguaje y el formato de caracteres de la página web -->
+        <meta lang="es">
+        <meta charset="UTF-8">
+        <!-- Se coloca este tag meta para que funcione correctamente el responsive. indicando que se debe adaptar al ancho del dispositivo y la escala inicial -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Referencia a la hoja de estilos -->
+        <link rel="stylesheet" href="estilos.css">
+        <!-- conexion con las fuentes de Google para la fuente personalizada -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@600&display=swap" rel="stylesheet">
+        <!-- Acá se usa title para establecer el nombre de la página en el head -->
+        <title>Las Tierras Intermedias</title>
+    </head>
+
+    <body>
+        <!-- header que empaqueta a todo el menú de navegación -->
+        <header class="top-nav">
+            <!--Se pone el título de la página como un link que se abre en la misma pestaña con el atributo target. El estilo esta dado hacia esta
+    etiqueta en específico en la hoja de estilos -->
+            <h1><a href="index.html" target="_self">Las Tierras Intermedias</a></h1>
+
+            <!-- Se incluye este código para colocar un chechbox estilado que funcione como menú de hamburguesa sin necesidad de javascript -->
+            <input id="menu-toggle" type="checkbox" />
+            <label class="menu-button-container" for="menu-toggle">
+                <div class="menu-button"></div>
+            </label>
+            <!-- se usa nav para hacer un menú de navegación. Van en una lista para que funcionen dentro del menú hamburguesa -->
+            <ul class="menu">
+                 <!-- links dentro de una lista, con especificaciones de clase para estilos -->
+                <li><a class="item-menu" href="place.html" target="_self">El lugar</a></li>
+                <li><a class="item-menu" href="char.html" target="_self">Personajes</a></li>
+                <li><a class="item-menu" href="activ.html" target="_self">Eventos</a></li>
+                <li><a class="item-menu" href="history.html" target="_self">Historia</a></li>
+                <li><a class="item-menu" href="map.html" target="_self">Mapa Interactivo</a></li>
+                <li><a class="item-menu" id="active" href="credits.html" target="_self">Créditos</a></li>
+            </ul>
+
+            </nav>
+        </header>
+        <div>
+            <!-- imagen que acompaña al texto -->
+            <div class="imgsintro"><img class="imgsize" src="images/cred.jpg"></div>
+            <p class="text-int">
+                En esta página alguna de la información es redactada por mi y algunas imagenes son mias. Lo demas ha
+                sido sacado de estos sitios:
+            </p>
+            <!-- debido a lo variable de la página, el espacio entre las tablas y la imagen debía ser mayor, para que no chocaran tan frecuentemente
+            es una solución algo burda, pero funciona -->
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <span class="creditos">
+
+                <!-- Para los créditos, use una tabla, para poder mirar cómo se podía personalizar y porque servía muy bien para
+                   organizar la información -->
+
+                   <table class="caja-tabla" id="credits">
+                       <!-- Se crearon clases propias para las cabeceras, otras para los links y para el texto
+           En general son lo mismo, pero tienen ligeras modificaciones por lo cual son clases diferentes -->
+                       <thead>
+                           <th class="cabezote">Pagina</th>
+                           <th class="cabezote">Información</th>
+                       </thead>
+                       <tr>
+                           <!-- se usa un link para que muestre un texto y esto está dentro de una casilla  -->
+                           <td><a class="table-li" href="https://eldenring.wiki.fextralife.com/Elden+Ring+Wiki">Elden
+                                   Ring
+                                   Wiki</a></td>
+                           <td class="text-table">Una Wikipedia con información del juego. Se obtiene de aquí: texto de
+                               los
+                               mapas,
+                               imágenes de secciones del mapa, Imagen del Noble Mascara de Oro </td>
+                       </tr>
+                       <tr>
+                           <td><a class="table-li" href="https://www.gamesradar.com/uk/">Games Radar</a></td>
+                           <td class="text-table">Página de videojuegos, noticias y tv. Se obtiene de aquí: imagen de
+                               Melina,
+                               imagen de Alexander, Puño de Hierro </td>
+                       </tr>
+                       <tr>
+                           <td><a class="table-li" href="https://www.rockpapershotgun.com/">Rock Paper Shotgun</a></td>
+                           <td class="text-table">Página de videojuegos en PC. Se obtiene de aquí: imagen de Ranni,
+                               imagen de
+                               Dos Dedos </td>
+                       </tr>
+                       <tr>
+                           <td><a class="table-li" href="https://www.rockpapershotgun.com/">Polygon</a></td>
+                           <td class="text-table">Página de videojuegos. Se obtiene de aquí: imagen de Fia</td>
+                       </tr>
+                       <tr>
+                           <td><a class="table-li" href="https://eldenring.fandom.com/wiki/Elden_Ring_Wiki">Elden Ring
+                                   Wiki</a>
+                           </td>
+                           <td class="text-table">Otra Wikipedia con información del juego. Se obtiene de aquí: imagen
+                               de la
+                               Reina Marika</td>
+                       </tr>
+                       <tr>
+                           <td><a class="table-li" href="https://www.millenium.org/">Millenium</a></td>
+                           <td class="text-table">Página francesa de videojuegos. Se obtiene de aqui: imagen de Gideon
+                               Ofnir
+                           </td>
+                       </tr>
+                       <td><a class="table-li" href="https://doharoots.com/">Doharoots</a></td>
+                       <td class="text-table">Página de noticias de Qatar. Se obtiene de aquí: imagen de Blaidd</td>
+                       </tr>
+                       </tr>
+                       <td><a class="table-li" href="https://www.pcgamer.com/">PC GAMER</a></td>
+                       <td class="text-table">Página de noticias tecnológicas. Se obtiene de aquí: imagen de Millicent
+                       </td>
+                       </tr>
+                       </tr>
+                       <td><a class="table-li" href="https://gamerant.com/">Gamerant</a></td>
+                       <td class="text-table">Página de videojuegos. Se obtiene de aquí: imagen de Tres Dedos</td>
+                       </tr>
+                       </tr>
+                       <td><a class="table-li" href="https://noticiasvideojuegos.com/">NoticiasVideojuegos</a></td>
+                       <td class="text-table">Página de videojuegos. Se obtiene de aquí: imagen de la Mesa de la Gracia
+                           Perdida
+                       </td>
+                       </tr>
+                       </tr>
+                       <td><a class="table-li" href="https://tenor.com/">Tenor</a></td>
+                       <td class="text-table">Página de GIFs. Se obtiene de aquí: gif de la Fragmentación</td>
+                       </tr>
+                   </table>
+           </span>
+           <!-- un span que empaqueta la tabla del mapa, permite alinearla y organizarla -->
+            <span class="navegacion">
+                 <!-- mapa de navegación -->
+                 <table class="caja-tabla">
+
+                    <thead>
+                        <!-- un cabezote que ocupa las seis casillas -->
+                        <th class="cabezote" colspan="7">Mapa de Navegación</th>
+                    </thead>
+                    <!-- una fila con las diferentes secciones de la pagina -->
+                    <tr>
+                        <td><a class="table-li" href="index.html">Inicio(index)</a></td>
+                        <td><a class="table-li" href="place.html">El lugar(place)</a></td>
+                        <td><a class="table-li" href="char.html">Personajes(char)</a></td>
+                        <td><a class="table-li" href="activ.html">Eventos(activ)</a></td>
+                        <td><a class="table-li" href="history.html">Historia(history)</a></td>
+                        <td><a class="table-li" href="map.html">Mapa Interactivo(map)</a></td>
+                        <td><a class="table-li" href="credits.html">Créditos(credits)</a></td>
+
+                    </tr>
+                    <!-- una fila con los diferentes contenidos a los que se tiene acceso en las secciones -->
+                    <!-- hacen uso de vínculos a las anclas dadas por los ids en cada sección -->
+                    <tr>
+                        <td> <a class="text-navtable" href="index.html#imagesindex">Imágenes de lugares del juego</a></td>
+                        <td> 
+                            <a class="text-navtable">Imágenes de las zonas del juego</a>
+                                <li><a class="text-navtable" href="place.html#mapa">Mapa</a></li>
+                                <li><a class="text-navtable" href="place.html#necrolimbo">Necrolimbo</a></li>
+                                <li><a class="text-navtable" href="place.html#peninsula">Península del Llanto</a></li>
+                                <li><a class="text-navtable" href="place.html#liurnia">Liurnia de los Lagos</a></li>
+                                <li><a class="text-navtable" href="place.html#caelid">Caelid</a></li>
+                                <li><a class="text-navtable" href="place.html#meseta">Meseta Altus</a></li>
+                                <li><a class="text-navtable" href="place.html#monte">Monte Gelmir</a></li>
+                                <li><a class="text-navtable" href="place.html#tumulo">Túmulo de Dragones</a></li>
+                                <li><a class="text-navtable" href="place.html#pico">Pico de los Gigantes</a></li>
+                                <li><a class="text-navtable" href="place.html#campo">Campo de Nieve Consagrado</a></li>
+                        </td>
+                        <td> 
+                            <a class="text-navtable">Imágenes de personajes del juego</a>
+                                <li><a class="text-navtable" href="char.html#melina">Melina</a></li>
+                                <li><a class="text-navtable" href="char.html#alexander">Alexander Puño de Hierro</a></li>
+                                <li><a class="text-navtable" href="char.html#ranni">Renna/Ranni La Bruja</a></li>
+                                <li><a class="text-navtable" href="char.html#fia">Fia</a></li>
+                                <li><a class="text-navtable" href="char.html#marika">Reina Marika</a></li>
+                                <li><a class="text-navtable" href="char.html#gideon">Gideon Ofnir, el Omnisciente</a></li>
+                                <li><a class="text-navtable" href="char.html#blaidd">Blaidd</a></li>
+                                <li><a class="text-navtable" href="char.html#millicent">Millicent</a></li>
+                                <li><a class="text-navtable" href="char.html#noble">Noble Mascara de Oro</a></li>
+                                <li><a class="text-navtable" href="char.html#dos">Dos Dedos</a></li>
+                                <li><a class="text-navtable" href="char.html#tres">Tres Dedos</a></li>
+ 
+                        </td>
+                        <td> 
+                            <a class="text-navtable">Imágenes de eventos del juego</a>
+                                <li><a class="text-navtable" href="activ.html#festival">Festival de Radahn</a></li>
+                                <li><a class="text-navtable" href="activ.html#mansion">Mansión del Volcán</a></li>
+                                <li><a class="text-navtable" href="activ.html#mesa">Mesa de la Gracia Perdida</a></li>
+                                <li><a class="text-navtable" href="activ.html#seguidores">Seguidores de Ranni</a></li>
+
+                        </td>
+                        <td> 
+                            <a class="text-navtable" href="history.html#anillo">GIF del anillo fragmentandose</a>
+                        
+                        </td>
+                        <td> 
+                            <a class="text-navtable" href="map.html">Mapa Interactivo de lugares del mundo</a>
+                                <li><a class="text-navtable" href="map.html#altusmap">Altus</a></li>
+                                <li><a class="text-navtable" href="map.html#caelidmap">Caelid</a></li>
+                                <li><a class="text-navtable" href="map.html#consecratedmap">Campo de Nieve Consagrado</a></li>
+                                <li><a class="text-navtable" href="map.html#dragonmap">Tumulo de Dragones</a></li>
+                                <li><a class="text-navtable" href="map.html#limbmap">Necrolimbo</a></li>
+                                <li><a class="text-navtable" href="map.html#liurniamap">Liurnia de los Lagos</a></li>
+                                <li><a class="text-navtable" href="map.html#gelmirmap">Monte Gelmir</a></li>
+                                <li><a class="text-navtable" href="map.html#mountainmap">Pico de los Gigantes</a></li>
+                                <li><a class="text-navtable" href="map.html#weepingmap">Península del Llanto</a></li>
+
+                        </td>
+                        <td> <a class="text-navtable" href="credits.html#credits">Lugares de donde se sacó la información</a></td>
+                    </tr>
+                   
+                </table>
+
+            </span>
+
+        </div>
+        <!-- Este elemento es una marca de créditos, que está diseñada para que se mantenga estática. Además, los estilos hacen que se pueda ver -->
+        <div>
+            <p class="fixed">Hecho por Andres Leonardo Escobar Pinzon - 2022</p>
+        </div>
+
+    </body>
+
+</html>
